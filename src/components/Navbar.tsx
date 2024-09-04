@@ -1,4 +1,5 @@
 import { Menu, ShoppingBag, User } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const leftNavbarLinks = [
@@ -39,9 +40,9 @@ const Navbar = () => {
           <ul className="hidden lg:flex gap-11 ml-8">
             {leftNavbarLinks.map((link) => (
               <li key={link.name}>
-                <a href={link.href} className="text-gray-800">
+                <Link to={link.href} className="text-gray-800">
                   {link.name}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -50,12 +51,12 @@ const Navbar = () => {
         <ul className="hidden lg:flex gap-11">
           {rightNavbarLinks.map((link) => (
             <li key={link.name}>
-              <a href={link.href} className="text-gray-800">
+              <Link to={link.href} className="text-gray-800">
                 {link.name}
-              </a>
+              </Link>
             </li>
           ))}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 cursor-pointer">
             <p className="text-[#8bc34a] font-bold">£225.00</p>
             <div>
               <ShoppingBag size={18} color="#8bc34a" />

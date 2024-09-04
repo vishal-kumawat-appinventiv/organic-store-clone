@@ -1,0 +1,57 @@
+import { ShoppingCart } from "lucide-react";
+
+const HeroImage = () => {
+  const heroImage =
+    "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/organic-products-hero.png";
+
+  const leafImage =
+    "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/07/logo-leaf-new.png";
+
+  return (
+    <>
+      <div className="max-w-7xl w-full mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 py-32">
+          <div>
+            <img src={heroImage} alt="heroImage" />
+          </div>
+          <div className="flex flex-col w-full gap-5">
+            <div className="leafImg relative p-5">
+              <img
+                src={leafImage}
+                alt="leafHero"
+                width={70}
+                className="absolute top-0 left-0"
+              />
+            </div>
+            <div>
+              <h4 className="text-black font-bold text-xl">
+                Best Quality Products
+              </h4>
+            </div>
+            <div>
+              <h1 className="text-6xl  text-black">
+                Join The Organic Movement!
+              </h1>
+            </div>
+            <div>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+              </p>
+            </div>
+            <div className="ShopNowBtn py-8">
+              <button className="bg-[#6a9739] p-3 px-6 text-white rounded">
+                <span className="flex gap-2">
+                  <ShoppingCart />
+                  SHOP NOW
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default HeroImage;

@@ -1,4 +1,4 @@
-import { ShoppingBag, User } from "lucide-react";
+import { Menu, ShoppingBag, User } from "lucide-react";
 
 const Navbar = () => {
   const leftNavbarLinks = [
@@ -27,17 +27,16 @@ const Navbar = () => {
     },
   ];
 
+  const logo =
+    "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/organic-store-logo5.svg";
+
   return (
     <>
       <nav className="p-4 px-8 bg-white flex items-center justify-between w-full">
         <div className="flex items-center">
-          <img
-            src="https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/organic-store-logo5.svg"
-            alt="nav-logo"
-            width={145}
-          />
+          <img src={logo} alt="nav-logo" width={145} />
 
-          <ul className="flex gap-11 ml-8">
+          <ul className="hidden lg:flex gap-11 ml-8">
             {leftNavbarLinks.map((link) => (
               <li key={link.name}>
                 <a href={link.href} className="text-gray-800">
@@ -48,7 +47,7 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <ul className="flex gap-11">
+        <ul className="hidden lg:flex gap-11">
           {rightNavbarLinks.map((link) => (
             <li key={link.name}>
               <a href={link.href} className="text-gray-800">
@@ -66,6 +65,15 @@ const Navbar = () => {
             </div>
           </div>
         </ul>
+        <div className="flex items-center gap-3 lg:hidden">
+          <p className="text-[#8bc34a] font-bold">£225.00</p>
+          <div>
+            <ShoppingBag size={18} color="#8bc34a" />
+          </div>
+          <div>
+            <Menu color="#ffffff" className="bg-[#8bc34a]" />
+          </div>
+        </div>
       </nav>
     </>
   );

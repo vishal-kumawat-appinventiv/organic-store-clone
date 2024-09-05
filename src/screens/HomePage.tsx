@@ -3,6 +3,7 @@ import FruitsCard from "../components/FruitsCard";
 import HeroCards from "../components/HeroCards";
 import HeroImage from "../components/HeroImage";
 import Navbar from "../components/Navbar";
+import PriceOffBaner from "../components/PriceOffBaner";
 
 const HomePage = () => {
   return (
@@ -14,6 +15,7 @@ const HomePage = () => {
       <HeroCards />
       <BestSelling />
       <FruitsCard />
+      <PriceOffBaner />
       <h1>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nostrum
         aperiam laborum blanditiis, ipsam cum. Iste, unde porro magni itaque

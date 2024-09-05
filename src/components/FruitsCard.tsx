@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import ShopNowBtn from "./ShopNowBtn";
 
 const FruitsCard = () => {
   const FruitsCardProducts = [
@@ -44,12 +45,7 @@ const FruitsCard = () => {
                 <div className="relative z-10">
                   <h2 className="text-2xl font-semibold">{f.name}</h2>
                   <p className="text-sm text-gray-600 mt-2">{f.desc}</p>
-                  <button className="bg-[#6a9739] p-3 rounded text-white mt-4">
-                    <span className="flex mr-2 items-center">
-                      <ArrowRight />
-                      SHOP NOW
-                    </span>
-                  </button>
+                  <ShopNowBtn />
                 </div>
               </div>
             );

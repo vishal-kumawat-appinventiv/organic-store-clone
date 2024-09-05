@@ -1,3 +1,4 @@
+import BestSelling from "../components/BestSelling";
 import HeroCards from "../components/HeroCards";
 import HeroImage from "../components/HeroImage";
 import Navbar from "../components/Navbar";
@@ -10,6 +11,7 @@ const HomePage = () => {
         <HeroImage />
       </div>
       <HeroCards />
+      <BestSelling />
       <h1>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nostrum
         aperiam laborum blanditiis, ipsam cum. Iste, unde porro magni itaque

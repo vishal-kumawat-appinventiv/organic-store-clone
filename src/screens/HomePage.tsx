@@ -1,4 +1,5 @@
 import BestSelling from "../components/BestSelling";
+import FruitsCard from "../components/FruitsCard";
 import HeroCards from "../components/HeroCards";
 import HeroImage from "../components/HeroImage";
 import Navbar from "../components/Navbar";
@@ -12,6 +13,7 @@ const HomePage = () => {
       </div>
       <HeroCards />
       <BestSelling />
+      <FruitsCard />
       <h1>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nostrum
         aperiam laborum blanditiis, ipsam cum. Iste, unde porro magni itaque

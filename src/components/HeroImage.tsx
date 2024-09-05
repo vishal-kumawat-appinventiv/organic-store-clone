@@ -11,10 +11,10 @@ const HeroImage = () => {
     <>
       <div className="max-w-7xl w-full mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 py-32 px-3">
-          <div>
+          <div className="order-2 md:order-1">
             <img src={heroImage} alt="heroImage" />
           </div>
-          <div className="relative">
+          <div className="relative order-1 md:order-2">
             <div className="lg:absolute lg:right-0 lg:top-8 text-center md:text-left max-w-xl flex flex-col w-full gap-5">
               <div className="leafImg relative p-5">
                 <img

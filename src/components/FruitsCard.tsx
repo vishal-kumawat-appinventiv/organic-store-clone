@@ -22,19 +22,29 @@ const FruitsCard = () => {
   return (
     <>
       <div className="bg-[#f8f6f3] py-28">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
           {FruitsCardProducts.map((f, idx) => {
             return (
-              <div key={idx} className="cards rounded-md bg-white p-8">
-                <h2 className="text-2xl font-semibold">{f.name}</h2>
-                <p className="text-sm text-gray-600 mt-2">{f.desc}</p>
-                <button className="bg-[#6a9739] p-3 rounded text-white mt-4">
-                  <span className="flex mr-2">
-                    <ArrowRight />
-                    SHOP NOW
-                  </span>
-                </button>
-                <img src={f.img} alt="img" className="" />
+              <div
+                key={idx}
+                className="cards lg:min-h-[350px] rounded-md bg-white p-8 relative overflow-hidden"
+              >
+                <img
+                  src={f.img}
+                  alt="img"
+                  className="absolute inset-0 w-full h-full object-cover opacity-90"
+                />
+
+                <div className="relative z-10">
+                  <h2 className="text-2xl font-semibold">{f.name}</h2>
+                  <p className="text-sm text-gray-600 mt-2">{f.desc}</p>
+                  <button className="bg-[#6a9739] p-3 rounded text-white mt-4">
+                    <span className="flex mr-2 items-center">
+                      <ArrowRight />
+                      SHOP NOW
+                    </span>
+                  </button>
+                </div>
               </div>
             );
           })}

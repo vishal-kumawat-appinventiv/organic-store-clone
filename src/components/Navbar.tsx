@@ -1,31 +1,20 @@
+import { useState } from "react";
 import { Menu, ShoppingBag, User } from "lucide-react";
 import { Link } from "react-router-dom";
+import Drawer from "./Drawer";
 
 const Navbar = () => {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
   const leftNavbarLinks = [
-    {
-      name: "Everything",
-      href: "/shop",
-    },
-    {
-      name: "Groceries",
-      href: "/groceries",
-    },
-    {
-      name: "Juice",
-      href: "/juice",
-    },
+    { name: "Everything", href: "/shop" },
+    { name: "Groceries", href: "/groceries" },
+    { name: "Juice", href: "/juice" },
   ];
 
   const rightNavbarLinks = [
-    {
-      name: "About",
-      href: "/about",
-    },
-    {
-      name: "Contact",
-      href: "/contact",
-    },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
   ];
 
   const logo =
@@ -36,7 +25,6 @@ const Navbar = () => {
       <nav className="p-4 px-8 bg-white flex items-center justify-between w-full">
         <div className="flex items-center">
           <img src={logo} alt="nav-logo" width={145} />
-
           <ul className="hidden lg:flex gap-11 ml-8">
             {leftNavbarLinks.map((link) => (
               <li key={link.name}>
@@ -58,7 +46,7 @@ const Navbar = () => {
           ))}
           <div className="flex items-center gap-4 cursor-pointer">
             <p className="text-[#8bc34a] font-bold">£225.00</p>
-            <div>
+            <div onClick={() => setDrawerOpen(true)}>
               <ShoppingBag size={18} color="#8bc34a" />
             </div>
             <div>
@@ -68,7 +56,7 @@ const Navbar = () => {
         </ul>
         <div className="flex items-center gap-3 lg:hidden">
           <p className="text-[#8bc34a] font-bold">£225.00</p>
-          <div>
+          <div onClick={() => setDrawerOpen(true)}>
             <ShoppingBag size={18} color="#8bc34a" />
           </div>
           <div>
@@ -76,6 +64,8 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+
+      <Drawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
     </>
   );
 };

@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Menu, ShoppingBag, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import Drawer from "./Drawer";
+import { MyContext } from "../libs/MyContext";
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const { cart } = useContext(MyContext);
 
   const leftNavbarLinks = [
     { name: "Everything", href: "/shop" },
@@ -46,8 +49,11 @@ const Navbar = () => {
           ))}
           <div className="flex items-center gap-4 cursor-pointer">
             <p className="text-[#8bc34a] font-bold">£225.00</p>
-            <div onClick={() => setDrawerOpen(true)}>
+            <div onClick={() => setDrawerOpen(true)} className="relative">
               <ShoppingBag size={18} color="#8bc34a" />
+              <p className="absolute top-[-10px] right-[-12px] rounded-full bg-[#87c34a] px-[6px] text-black text-sm">
+                {cart?.length}
+              </p>
             </div>
             <div>
               <User size={22} color="#000000" />

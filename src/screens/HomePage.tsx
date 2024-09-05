@@ -9,9 +9,7 @@ const HomePage = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-[#faf9f7]">
-        <HeroImage />
-      </div>
+      <HeroImage />
       <HeroCards />
       <BestSelling />
       <FruitsCard />

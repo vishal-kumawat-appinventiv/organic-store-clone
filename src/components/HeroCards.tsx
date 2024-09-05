@@ -1,4 +1,4 @@
-import { icons, NotebookTabs, PiggyBank, Recycle, Truck } from "lucide-react";
+import { NotebookTabs, PiggyBank, Recycle, Truck } from "lucide-react";
 
 const HeroCards = () => {
   const HeroCardsData = [

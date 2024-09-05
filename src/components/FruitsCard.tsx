@@ -1,4 +1,3 @@
-import { ArrowRight } from "lucide-react";
 import ShopNowBtn from "./ShopNowBtn";
 
 const FruitsCard = () => {

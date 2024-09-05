@@ -17,6 +17,13 @@ const PriceOffBaner = () => {
           </div>
         </div>
       </div>
+      <div className="bg-[#f8f6f3]">
+        <div className="text-center p-3">
+          <h3 className="text-2xl py-4">
+            Try It For Free. No Registration Needed.
+          </h3>
+        </div>
+      </div>
     </>
   );
 };

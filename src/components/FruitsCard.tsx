@@ -32,7 +32,7 @@ const FruitsCard = () => {
                 <img
                   src={f.img}
                   alt="img"
-                  className="absolute inset-0 w-full h-full object-cover opacity-90"
+                  className="absolute lg:inset-0 right-0 w-32 lg:w-full lg:h-full object-cover opacity-90"
                 />
 
                 <div className="relative z-10">

@@ -1,5 +1,6 @@
 import BestSelling from "../components/BestSelling";
 import BrandsDisplay from "../components/BrandsDisplay";
+import Footer from "../components/Footer";
 import FruitsCard from "../components/FruitsCard";
 import HeroCards from "../components/HeroCards";
 import HeroImage from "../components/HeroImage";
@@ -18,13 +19,7 @@ const HomePage = () => {
       <PriceOffBaner />
       <TrendingProd />
       <BrandsDisplay />
-      <h1 className="text-3xl">Bottom Text</h1>
-      <h1 className="text-3xl">Bottom Text</h1>
-      <h1 className="text-3xl">Bottom Text</h1>
-      <h1 className="text-3xl">Bottom Text</h1>
-      <h1 className="text-3xl">Bottom Text</h1>
-      <h1 className="text-3xl">Bottom Text</h1>
-      <h1 className="text-3xl">Bottom Text</h1>
+      <Footer />
     </>
   );
 };

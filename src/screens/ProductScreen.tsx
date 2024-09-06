@@ -74,7 +74,7 @@ const ProductScreen = () => {
             <p className="text-gray-600">{product?.desc}</p>
           </div>
           {/* related prod */}
-          <RelatedProducts category={product?.category}/>
+          <RelatedProducts category={product?.category!}/>
         </div>
       </div>
       <Footer />

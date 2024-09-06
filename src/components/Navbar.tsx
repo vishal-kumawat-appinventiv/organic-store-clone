@@ -46,7 +46,7 @@ const Navbar = () => {
             <div onClick={() => setDrawerOpen(true)} className="relative">
               <ShoppingBag size={18} color="#8bc34a" />
               <p className="absolute top-[-10px] right-[-12px] rounded-full bg-[#87c34a] px-[6px] text-black text-sm">
-                {cart?.length}
+                {cart.reduce((total, item) => total + item.quantity, 0)}
               </p>
             </div>
             <div>

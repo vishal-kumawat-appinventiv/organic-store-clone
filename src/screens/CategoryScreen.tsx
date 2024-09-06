@@ -45,7 +45,11 @@ const CategoryScreen = () => {
               </div>
               <div className=" mt-20">
                 {saleProducts?.slice(0, 3)?.map((ele, id) => {
-                  return <ProductComponent data={ele} key={id} />;
+                  return (
+                    <div className="mb-8">
+                      <ProductComponent data={ele} key={id} />
+                    </div>
+                  );
                 })}
               </div>
             </div>

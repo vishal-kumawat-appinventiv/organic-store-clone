@@ -1,38 +1,11 @@
+import { useContext, useMemo } from "react";
+import { MyContext } from "../libs/MyContext";
+
 const TrendingProd = () => {
-  const TrendingProds = [
-    {
-      img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/coffee-asorted-300x300.jpg",
-      category: "Groceries",
-      name: "Assorted Coffee",
-      rating: 0,
-      price: 35.00,
-      sale: false,
-    },
-    {
-      img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/orage-juice-kariz-300x300.jpg",
-      category: "Juice",
-      name: "Fresh Orange Juice",
-      rating: 0,
-      price: 18.00,
-      sale: false,
-    },
-    {
-      img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/sanitizer.jpg",
-      category: "Groceries",
-      name: "Hand Sanitizer",
-      rating: 0,
-      price: 15.00,
-      sale: false,
-    },
-    {
-      img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/red-chillies-300x300.jpg",
-      category: "Groceries",
-      name: "Handpicked Red Chillies",
-      rating: 0,
-      price: 19.00,
-      sale: false,
-    },
-  ];
+  const { products } = useContext(MyContext);
+  const TrendingProds = useMemo(() => {
+    return products.filter((p) => p.trending);
+  }, [products]);
 
   const leafImg =
     "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/07/logo-leaf-new.png";
@@ -49,9 +22,9 @@ const TrendingProd = () => {
           />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-          {TrendingProds.map((p, idx) => {
+          {TrendingProds.map((p) => {
             return (
-              <div key={idx} className="relative flex flex-col text-center">
+              <div key={p.id} className="relative flex flex-col text-center">
                 <div className="w-full h-full">
                   <img src={p.img} alt="img" className="w-full" />
                 </div>

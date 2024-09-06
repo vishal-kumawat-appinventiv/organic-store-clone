@@ -1,38 +1,11 @@
+import { useContext, useMemo } from "react";
+import { MyContext } from "../libs/MyContext";
+
 const BestSelling = () => {
-  const bestSellingProducts = [
-    {
-      img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/coffee-asorted-300x300.jpg",
-      category: "Groceries",
-      name: "Assorted Coffee",
-      rating: 0,
-      price: 35.0,
-      sale: false,
-    },
-    {
-      img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/sanitizer-300x300.jpg",
-      category: "Groceries",
-      name: "Hand Sanitizer",
-      rating: 0,
-      price: 15.0,
-      sale: false,
-    },
-    {
-      img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/red-chillies-300x300.jpg",
-      category: "Groceries",
-      name: "Handpicked Red Chillies",
-      rating: 0,
-      price: 5.0,
-      sale: false,
-    },
-    {
-      img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/edible-oil-300x300.jpg",
-      category: "Groceries",
-      name: "Natural Extracted Edible Oil",
-      rating: 0,
-      price: 25.0,
-      sale: true,
-    },
-  ];
+  const { products } = useContext(MyContext);
+  const bestSellingProducts = useMemo(() => {
+    return products.filter((p) => p.bestSelling);
+  }, [products]);
 
   const leafImg =
     "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/07/logo-leaf-new.png";
@@ -51,9 +24,9 @@ const BestSelling = () => {
           />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-          {bestSellingProducts.map((p, idx) => {
+          {bestSellingProducts.map((p) => {
             return (
-              <div key={idx} className="relative flex flex-col text-center">
+              <div key={p.id} className="relative flex flex-col text-center">
                 <div className="w-full h-full">
                   <img src={p.img} alt="img" className="w-full" />
                 </div>

@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { useContext, useMemo, useState } from "react";
 import { MyContext } from "../libs/MyContext";
@@ -7,8 +7,8 @@ import Footer from "../components/Footer";
 import RelatedProducts from "../components/RelatedProducts";
 
 const ProductScreen = () => {
-  const location = useLocation();
-  const currentPath = location.pathname.split("/")[2].replace(/-/g, " ");
+  const { prodName } = useParams();
+  const currentPath = prodName!.replace(/-/g, " ");
   const { products, setCart, cart } = useContext(MyContext);
 
   const [count, setCount] = useState(1);

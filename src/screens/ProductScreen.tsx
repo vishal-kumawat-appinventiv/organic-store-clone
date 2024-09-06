@@ -9,7 +9,7 @@ import RelatedProducts from "../components/RelatedProducts";
 const ProductScreen = () => {
   const location = useLocation();
   const currentPath = location.pathname.split("/")[2].replace(/-/g, " ");
-  const { products, setCart } = useContext(MyContext);
+  const { products, setCart, cart } = useContext(MyContext);
 
   const [count, setCount] = useState(1);
 
@@ -20,16 +20,25 @@ const ProductScreen = () => {
   }, [products, currentPath]);
 
   const handleAddToCart = () => {
-    console.log("Added to cart");
-    setCart((prev) => [
-      ...prev,
-      {
-        img: product?.img!,
-        productName: product?.name!,
-        quantity: count!,
-        price: product?.price!,
-      },
-    ]);
+    setCart((prev) => {
+      const existingIndex = prev.findIndex((item) => item.id === product?.id);
+      if (existingIndex !== -1) {
+        const updatedCart = [...prev];
+        updatedCart[existingIndex].quantity += count;
+        return updatedCart;
+      } else {
+        return [
+          ...prev,
+          {
+            id: product?.id!,
+            img: product?.img!,
+            productName: product?.name!,
+            quantity: count!,
+            price: product?.price!,
+          },
+        ];
+      }
+    });
   };
 
   return (

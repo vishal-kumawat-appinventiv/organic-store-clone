@@ -10,9 +10,9 @@ interface DrawerProps {
 const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose }) => {
   const { cart, setCart } = useContext(MyContext);
 
-  const handleDeleteItem = (val: string) => {
+  const handleDeleteItem = (val: number) => {
     return () => {
-      setCart((prev) => prev.filter((item) => item.productName !== val));
+      setCart((prev) => prev.filter((item) => item.id !== val));
     };
   };
 
@@ -44,9 +44,9 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose }) => {
             {cart.length === 0 ? (
               <div className="p-4 text-center">No items in cart</div>
             ) : (
-              cart.map((item, index) => (
+              cart.map((item) => (
                 <div
-                  key={index}
+                  key={item.id}
                   className="flex items-center justify-between p-4 border-b"
                 >
                   <div className="flex items-center space-x-4">
@@ -65,7 +65,7 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose }) => {
                   <div className="flex items-center space-x-4">
                     <button
                       className="text-gray-800 hover:text-gray-600 border-[1px] border-gray-800 rounded-full p-1"
-                      onClick={handleDeleteItem(item?.productName)}
+                      onClick={handleDeleteItem(item?.id)}
                     >
                       <X size={10} />
                     </button>

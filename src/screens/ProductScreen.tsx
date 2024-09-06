@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { useContext, useMemo, useState } from "react";
 import { MyContext } from "../libs/MyContext";
@@ -73,7 +73,6 @@ const ProductScreen = () => {
             <h4 className="text-xl mt-3">Description</h4>
             <p className="text-gray-600">{product?.desc}</p>
           </div>
-          {/* related prod */}
           <RelatedProducts category={product?.category!}/>
         </div>
       </div>

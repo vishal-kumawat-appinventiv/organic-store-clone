@@ -10,9 +10,9 @@ const Navbar = () => {
   const { cart } = useContext(MyContext);
 
   const leftNavbarLinks = [
-    { name: "Everything", href: "/shop" },
-    { name: "Groceries", href: "/groceries" },
-    { name: "Juice", href: "/juice" },
+    { name: "Everything", href: "/category/shop" },
+    { name: "Groceries", href: "/category/groceries" },
+    { name: "Juice", href: "/category/juice" },
   ];
 
   const rightNavbarLinks = [

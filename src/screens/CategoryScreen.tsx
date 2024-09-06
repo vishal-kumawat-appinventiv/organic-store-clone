@@ -15,7 +15,7 @@ const CategoryScreen = () => {
     categoryType === "shop"
       ? products
       : products?.filter((ele: ProductType) => {
-          return ele.category === categoryType;
+          return ele.category.toLowerCase() === categoryType;
         });
 
   const saleProducts = products?.filter((ele: ProductType) => {
@@ -28,13 +28,13 @@ const CategoryScreen = () => {
       <div className="bg-gray-100">
         <div className="lg:max-w-7xl px-10 xl:px-auto md:mx-auto">
           <div className="grid lg:grid-cols-3 py-12">
-            <div className="lg:block hidden border-e-2 border-gray-600 border-opacity-25 py-5 px-10">
+            <div className="lg:block hidden border-r border-gray-600 border-opacity-25 py-5 px-16">
               <div className="gap-3 flex items-center">
                 <div>
                   <input
                     type="text"
                     placeholder="Search Products..."
-                    className="border p-2"
+                    className="border p-2 max-w-[300px] w-full"
                   />
                 </div>
                 <div>
@@ -54,7 +54,7 @@ const CategoryScreen = () => {
                 <Link to={"/"}>Home</Link> / {categoryType}
               </div>
               <div>
-                <h3 className="text-[#8ec44e] text-6xl mt-5 font-bold">
+                <h3 className="text-[#8ec44e] text-6xl mt-5 font-bold capitalize">
                   {categoryType}
                 </h3>
               </div>

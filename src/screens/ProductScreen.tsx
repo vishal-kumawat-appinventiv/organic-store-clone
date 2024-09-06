@@ -20,25 +20,28 @@ const ProductScreen = () => {
   }, [products, currentPath]);
 
   const handleAddToCart = () => {
-    setCart((prev) => {
-      const existingIndex = prev.findIndex((item) => item.id === product?.id);
-      if (existingIndex !== -1) {
-        const updatedCart = [...prev];
-        updatedCart[existingIndex].quantity += count;
-        return updatedCart;
-      } else {
-        return [
-          ...prev,
-          {
-            id: product?.id!,
-            img: product?.img!,
-            productName: product?.name!,
-            quantity: count!,
-            price: product?.price!,
-          },
-        ];
-      }
-    });
+    const existingItem = cart.find((item) => item.id === product?.id);
+
+    if (existingItem) {
+      setCart(
+        cart.map((item) =>
+          item.id === product?.id
+            ? { ...item, quantity: item.quantity + count }
+            : item
+        )
+      );
+    } else {
+      setCart([
+        ...cart,
+        {
+          id: product?.id!,
+          img: product?.img!,
+          productName: product?.name!,
+          quantity: count!,
+          price: product?.price!,
+        },
+      ]);
+    }
   };
 
   return (

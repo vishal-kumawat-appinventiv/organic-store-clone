@@ -1,24 +1,7 @@
+import { FruitsCardProducts } from "../libs/mock";
 import ShopNowBtn from "./ShopNowBtn";
 
 const FruitsCard = () => {
-  const FruitsCardProducts = [
-    {
-      name: "Farm Fresh Fruits",
-      desc: "Ut sollicitudin quam vel purus tempus, vel eleifend felis varius.",
-      img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/product11-free-img.jpg",
-    },
-    {
-      name: "Fresh Vegetables",
-      img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/product13-free-img.jpg",
-      desc: "Aliquam porta justo nibh, id laoreet sapien sodales vitae justo.",
-    },
-    {
-      name: "Organic Legume",
-      img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/product17-free-img.jpg",
-      desc: "Phasellus sed urna mattis, viverra libero sed, aliquam est.",
-    },
-  ];
-
   const leafImage =
     "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/basil-leaf.png";
 

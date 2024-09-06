@@ -1,3 +1,5 @@
+import { NotebookTabs, PiggyBank, Recycle, Truck } from "lucide-react";
+
 export const DummyProducts = [
   {
     id: 1,
@@ -72,3 +74,155 @@ export const DummyProducts = [
     trending: false,
   },
 ];
+
+export const leafImg =
+  "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/07/logo-leaf-new.png";
+
+export const BrandsLogo = [
+  {
+    img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/logo-4.svg",
+  },
+  {
+    img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/logo-5.svg",
+  },
+  {
+    img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/logo-2.svg",
+  },
+  {
+    img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/logo-3.svg",
+  },
+  {
+    img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/logo-1.svg",
+  },
+];
+
+export const quickLinks = [
+  {
+    href: "/about",
+    title: "About Us",
+  },
+  {
+    href: "/cart",
+    title: "Cart",
+  },
+  {
+    href: "/checkout",
+    title: "Checkout",
+  },
+  {
+    href: "/contact",
+    title: "Contact",
+  },
+  {
+    href: "/",
+    title: "Home",
+  },
+  {
+    href: "/my-account",
+    title: "My Account",
+  },
+  {
+    href: "/shop",
+    title: "Shop",
+  },
+];
+
+export const siteLinks = [
+  {
+    href: "/privacy-policy",
+    title: "Privacy Policy",
+  },
+  {
+    href: "/shipping-details",
+    title: "Shipping Details",
+  },
+  {
+    href: "/offers-coupons",
+    title: "Offers & Coupons",
+  },
+  {
+    href: "/terms-conditions",
+    title: "Terms & Conditions",
+  },
+];
+
+export const moreLinks = [
+  {
+    title: "Know More About Us",
+    href: "/about",
+  },
+  {
+    title: "Visit Store",
+    href: "/shop",
+  },
+  {
+    title: "Let’s Connect",
+    href: "/contact",
+  },
+  {
+    title: "Locate Stores",
+    href: "/store",
+  },
+];
+
+export const btnImgs = [
+  {
+    img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/play-store.png",
+  },
+  {
+    img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/app-store.png",
+  },
+];
+
+export const FruitsCardProducts = [
+  {
+    name: "Farm Fresh Fruits",
+    desc: "Ut sollicitudin quam vel purus tempus, vel eleifend felis varius.",
+    img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/product11-free-img.jpg",
+  },
+  {
+    name: "Fresh Vegetables",
+    img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/product13-free-img.jpg",
+    desc: "Aliquam porta justo nibh, id laoreet sapien sodales vitae justo.",
+  },
+  {
+    name: "Organic Legume",
+    img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/product17-free-img.jpg",
+    desc: "Phasellus sed urna mattis, viverra libero sed, aliquam est.",
+  },
+];
+
+export const HeroCardsData = [
+  {
+    topic: "Free Shipping",
+    desc: "Above $5 Only",
+    icon: Truck,
+  },
+  {
+    topic: "Certified Organic",
+    desc: "100% Guarantee",
+    icon: NotebookTabs,
+  },
+  {
+    topic: "Huge Savings",
+    desc: "At Lowest Price",
+    icon: PiggyBank,
+  },
+  {
+    topic: "Easy Returns",
+    desc: "No Questions Asked",
+    icon: Recycle,
+  },
+];
+
+export const leftNavbarLinks = [
+  { name: "Everything", href: "/category/shop" },
+  { name: "Groceries", href: "/category/groceries" },
+  { name: "Juice", href: "/category/juice" },
+];
+
+export const rightNavbarLinks = [
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
+];
+

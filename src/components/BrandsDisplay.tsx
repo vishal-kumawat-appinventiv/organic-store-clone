@@ -1,22 +1,6 @@
-const BrandsDisplay = () => {
-  const BrandsLogo = [
-    {
-      img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/logo-4.svg",
-    },
-    {
-      img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/logo-5.svg",
-    },
-    {
-      img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/logo-2.svg",
-    },
-    {
-      img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/logo-3.svg",
-    },
-    {
-      img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/logo-1.svg",
-    },
-  ];
+import { BrandsLogo } from "../libs/mock";
 
+const BrandsDisplay = () => {
   return (
     <>
       <div className="bg-[#faf9f6] py-10">

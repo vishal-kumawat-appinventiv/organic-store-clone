@@ -1,86 +1,9 @@
 import { Facebook, Instagram, Twitter } from "lucide-react";
+import { btnImgs, moreLinks, quickLinks, siteLinks } from "../libs/mock";
 
 const Footer = () => {
   const logoImg =
     "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/07/organic-store-white-logo.png";
-
-  const quickLinks = [
-    {
-      href: "/about",
-      title: "About Us",
-    },
-    {
-      href: "/cart",
-      title: "Cart",
-    },
-    {
-      href: "/checkout",
-      title: "Checkout",
-    },
-    {
-      href: "/contact",
-      title: "Contact",
-    },
-    {
-      href: "/",
-      title: "Home",
-    },
-    {
-      href: "/my-account",
-      title: "My Account",
-    },
-    {
-      href: "/shop",
-      title: "Shop",
-    },
-  ];
-
-  const siteLinks = [
-    {
-      href: "/privacy-policy",
-      title: "Privacy Policy",
-    },
-    {
-      href: "/shipping-details",
-      title: "Shipping Details",
-    },
-    {
-      href: "/offers-coupons",
-      title: "Offers & Coupons",
-    },
-    {
-      href: "/terms-conditions",
-      title: "Terms & Conditions",
-    },
-  ];
-
-  const moreLinks = [
-    {
-      title: "Know More About Us",
-      href: "/about",
-    },
-    {
-      title: "Visit Store",
-      href: "/shop",
-    },
-    {
-      title: "Let’s Connect",
-      href: "/contact",
-    },
-    {
-      title: "Locate Stores",
-      href: "/store",
-    },
-  ];
-
-  const btnImgs = [
-    {
-      img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/play-store.png",
-    },
-    {
-      img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/app-store.png",
-    },
-  ];
 
   return (
     <>

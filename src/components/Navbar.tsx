@@ -3,22 +3,12 @@ import { Menu, ShoppingBag, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import Drawer from "./Drawer";
 import { MyContext } from "../libs/MyContext";
+import { leftNavbarLinks, rightNavbarLinks } from "../libs/mock";
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const { cart } = useContext(MyContext);
-
-  const leftNavbarLinks = [
-    { name: "Everything", href: "/category/shop" },
-    { name: "Groceries", href: "/category/groceries" },
-    { name: "Juice", href: "/category/juice" },
-  ];
-
-  const rightNavbarLinks = [
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
-  ];
 
   const logo =
     "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/organic-store-logo5.svg";

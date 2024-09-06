@@ -27,7 +27,9 @@ const Navbar = () => {
     <>
       <nav className="p-4 px-8 bg-white flex items-center justify-between w-full">
         <div className="flex items-center">
-          <img src={logo} alt="nav-logo" width={145} />
+          <Link to={"/"}>
+            <img src={logo} alt="nav-logo" width={145} />
+          </Link>
           <ul className="hidden lg:flex gap-11 ml-8">
             {leftNavbarLinks.map((link) => (
               <li key={link.name}>

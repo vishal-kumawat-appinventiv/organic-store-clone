@@ -44,7 +44,7 @@ const ProductScreen = () => {
                 </div>
                 <div className="flex items-center">
                   <button
-                    className="px-3 py-1 border-2 border-gray-200 hover:bg-[#c19a83]"
+                    className="px-3 py-1 border-2 border-gray-200 hover:bg-[#6a9739]"
                     onClick={() => count > 1 && setCount(count - 1)}
                   >
                     -
@@ -53,7 +53,7 @@ const ProductScreen = () => {
                     {count}
                   </p>
                   <button
-                    className="px-3 py-1 border-2 border-gray-200 hover:bg-[#c19a83]"
+                    className="px-3 py-1 border-2 border-gray-200 hover:bg-[#6a9739]"
                     onClick={() => setCount(count + 1)}
                   >
                     +

@@ -100,12 +100,18 @@ const CategoryScreen = () => {
                     onInput={handleSliderChange}
                   />
                 </div>
-                <div>
+                <div className="flex items-center gap-5">
                   <button
                     onClick={handleFilterProd}
                     className="bg-[#6a9739] text-white p-2 mt-5 rounded"
                   >
                     Apply
+                  </button>
+                  <button
+                    onClick={() => setFilterProducts([])}
+                    className="bg-[#6a9739] text-white p-2 mt-5 rounded"
+                  >
+                    Clear Filter
                   </button>
                 </div>
               </div>

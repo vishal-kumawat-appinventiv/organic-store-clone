@@ -44,10 +44,10 @@ const CategoryScreen = () => {
                 </div>
               </div>
               <div className=" mt-20">
-                {saleProducts?.slice(0, 3)?.map((ele, id) => {
+                {saleProducts?.slice(0, 3)?.map((ele) => {
                   return (
-                    <div className="mb-8">
-                      <ProductComponent data={ele} key={id} />
+                    <div key={ele?.id} className="mb-8">
+                      <ProductComponent data={ele} />
                     </div>
                   );
                 })}
@@ -74,8 +74,8 @@ const CategoryScreen = () => {
                 </div>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
-                {productCategoryList?.map((ele, id) => {
-                  return <ProductComponent data={ele} key={id} />;
+                {productCategoryList?.map((ele) => {
+                  return <ProductComponent key={ele?.id} data={ele} />;
                 })}
               </div>
             </div>

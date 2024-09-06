@@ -9,7 +9,7 @@ import RelatedProducts from "../components/RelatedProducts";
 const ProductScreen = () => {
   const location = useLocation();
   const currentPath = location.pathname.split("/")[2].replace(/-/g, " ");
-  const { products } = useContext(MyContext);
+  const { products, setCart } = useContext(MyContext);
 
   const [count, setCount] = useState(1);
 
@@ -18,6 +18,19 @@ const ProductScreen = () => {
       product.name.toLowerCase().includes(currentPath)
     );
   }, [products, currentPath]);
+
+  const handleAddToCart = () => {
+    console.log("Added to cart");
+    setCart((prev) => [
+      ...prev,
+      {
+        img: product?.img!,
+        productName: product?.name!,
+        quantity: count!,
+        price: product?.price!,
+      },
+    ]);
+  };
 
   return (
     <>
@@ -59,7 +72,10 @@ const ProductScreen = () => {
                   >
                     +
                   </button>
-                  <button className="px-10 rounded py-1 bg-[#6a9739] text-white ml-3">
+                  <button
+                    onClick={handleAddToCart}
+                    className="px-10 rounded py-1 bg-[#6a9739] text-white ml-3"
+                  >
                     Add to Cart
                   </button>
                 </div>
@@ -73,7 +89,7 @@ const ProductScreen = () => {
             <h4 className="text-xl mt-3">Description</h4>
             <p className="text-gray-600">{product?.desc}</p>
           </div>
-          <RelatedProducts category={product?.category!}/>
+          <RelatedProducts category={product?.category!} />
         </div>
       </div>
       <Footer />

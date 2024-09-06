@@ -59,4 +59,16 @@ export const DummyProducts = [
     bestSelling: false,
     trending: true,
   },
+  {
+    id: 6,
+    img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/cashew-butter-500.jpg",
+    category: "Groceries",
+    name: "Cashew Butter",
+    desc: "Neque porro quisquam est, qui dolore ipsum quia dolor sit amet, consectetur adipisci velit, sed quia non incidunt lores ta porro ame. numquam eius modi tempora incidunt lores ta porro ame.",
+    rating: 0,
+    price: 25.0,
+    sale: true,
+    bestSelling: false,
+    trending: false,
+  },
 ];

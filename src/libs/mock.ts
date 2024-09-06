@@ -75,9 +75,6 @@ export const DummyProducts = [
   },
 ];
 
-export const leafImg =
-  "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/07/logo-leaf-new.png";
-
 export const BrandsLogo = [
   {
     img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/logo-4.svg",
@@ -225,4 +222,3 @@ export const rightNavbarLinks = [
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
-

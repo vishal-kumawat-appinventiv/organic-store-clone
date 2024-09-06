@@ -51,6 +51,7 @@ const CategoryScreen = () => {
   const [filterProducts, setFilterProducts] = useState<Array<ProductType>>([]);
 
   const handleFilterProd = () => {
+    setSearchProducts([]);
     const prods = productCategoryList?.filter((ele: ProductType) => {
       return ele?.price >= minValue && ele?.price <= maxValue;
     });

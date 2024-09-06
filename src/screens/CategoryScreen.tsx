@@ -4,6 +4,9 @@ import { MyContext } from "../libs/MyContext";
 import { useContext, useState } from "react";
 import ProductComponent from "../components/ProductComponent";
 import { ChevronRight } from "lucide-react";
+//@ts-ignore
+import RangeSlider from "react-range-slider-input";
+import "react-range-slider-input/dist/style.css";
 
 const CategoryScreen = () => {
   const { categoryType } = useParams();
@@ -22,6 +25,13 @@ const CategoryScreen = () => {
 
   const [input, setInput] = useState("");
   const [searchProducts, setSearchProducts] = useState<Array<ProductType>>([]);
+  const [minValue, setMinValue] = useState(10);
+  const [maxValue, setMaxValue] = useState(50);
+
+  const handleSliderChange = (values: number[]) => {
+    setMinValue(values[0]);
+    setMaxValue(values[1]);
+  };
 
   const handleInputChange = (e: any) => {
     setInput(e.target.value);
@@ -31,13 +41,20 @@ const CategoryScreen = () => {
     if (input === "") {
       setSearchProducts([]);
     } else {
-      const filteredProducts = productCategoryList?.filter(
-        (ele: ProductType) => {
-          return ele?.name.toLowerCase().includes(input.toLowerCase());
-        }
-      );
-      setSearchProducts(filteredProducts);
+      const searchProds = productCategoryList?.filter((ele: ProductType) => {
+        return ele?.name.toLowerCase().includes(input.toLowerCase());
+      });
+      setSearchProducts(searchProds);
     }
+  };
+
+  const [filterProducts, setFilterProducts] = useState<Array<ProductType>>([]);
+
+  const handleFilterProd = () => {
+    const prods = productCategoryList?.filter((ele: ProductType) => {
+      return ele?.price >= minValue && ele?.price <= maxValue;
+    });
+    setFilterProducts(prods);
   };
 
   return (
@@ -61,6 +78,34 @@ const CategoryScreen = () => {
                     className="p-2 bg-[#6a9739] rounded"
                   >
                     <ChevronRight color="#fff" />
+                  </button>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-[#8ec44e] text-2xl mt-5 font-bold">
+                  Filter by Price
+                </h3>
+                <div className="flex items-center gap-2">
+                  <p>{minValue}</p>
+                  <p className="text-gray-500">to</p>
+                  <p>{maxValue}</p>
+                </div>
+                <div className="mt-5">
+                  <RangeSlider
+                    min={10}
+                    max={100}
+                    step={1}
+                    defaultValue={[10, 50]}
+                    value={[minValue, maxValue]}
+                    onInput={handleSliderChange}
+                  />
+                </div>
+                <div>
+                  <button
+                    onClick={handleFilterProd}
+                    className="bg-[#6a9739] text-white p-2 mt-5 rounded"
+                  >
+                    Apply
                   </button>
                 </div>
               </div>
@@ -96,12 +141,16 @@ const CategoryScreen = () => {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
                 {searchProducts.length > 0
-                  ? searchProducts?.map((ele) => {
-                      return <ProductComponent key={ele?.id} data={ele} />;
-                    })
-                  : productCategoryList?.map((ele) => {
-                      return <ProductComponent key={ele?.id} data={ele} />;
-                    })}
+                  ? searchProducts.map((ele) => (
+                      <ProductComponent key={ele?.id} data={ele} />
+                    ))
+                  : filterProducts.length > 0
+                  ? filterProducts.map((ele) => (
+                      <ProductComponent key={ele?.id} data={ele} />
+                    ))
+                  : productCategoryList?.map((ele) => (
+                      <ProductComponent key={ele?.id} data={ele} />
+                    ))}
               </div>
             </div>
           </div>

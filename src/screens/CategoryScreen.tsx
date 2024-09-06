@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { ProductType } from "../libs/types";
 import { MyContext } from "../libs/MyContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import ProductComponent from "../components/ProductComponent";
 import { ChevronRight } from "lucide-react";
 
@@ -20,6 +20,26 @@ const CategoryScreen = () => {
     return ele?.sale === true;
   });
 
+  const [input, setInput] = useState("");
+  const [searchProducts, setSearchProducts] = useState<Array<ProductType>>([]);
+
+  const handleInputChange = (e: any) => {
+    setInput(e.target.value);
+  };
+
+  const handleSearch = () => {
+    if (input === "") {
+      setSearchProducts([]);
+    } else {
+      const filteredProducts = productCategoryList?.filter(
+        (ele: ProductType) => {
+          return ele?.name.toLowerCase().includes(input.toLowerCase());
+        }
+      );
+      setSearchProducts(filteredProducts);
+    }
+  };
+
   return (
     <>
       <div className="bg-gray-100">
@@ -32,10 +52,14 @@ const CategoryScreen = () => {
                     type="text"
                     placeholder="Search Products..."
                     className="border p-2 max-w-[300px] w-full"
+                    onChange={handleInputChange}
                   />
                 </div>
                 <div>
-                  <button className="p-2 bg-[#6a9739] rounded">
+                  <button
+                    onClick={handleSearch}
+                    className="p-2 bg-[#6a9739] rounded"
+                  >
                     <ChevronRight color="#fff" />
                   </button>
                 </div>
@@ -71,9 +95,13 @@ const CategoryScreen = () => {
                 </div>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
-                {productCategoryList?.map((ele) => {
-                  return <ProductComponent key={ele?.id} data={ele} />;
-                })}
+                {searchProducts.length > 0
+                  ? searchProducts?.map((ele) => {
+                      return <ProductComponent key={ele?.id} data={ele} />;
+                    })
+                  : productCategoryList?.map((ele) => {
+                      return <ProductComponent key={ele?.id} data={ele} />;
+                    })}
               </div>
             </div>
           </div>

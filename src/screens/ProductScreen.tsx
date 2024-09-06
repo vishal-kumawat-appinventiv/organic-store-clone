@@ -46,7 +46,6 @@ const ProductScreen = () => {
 
   return (
     <>
-      <Navbar />
       <div className="bg-[#f8f6f3] py-20">
         <div className="max-w-7xl mx-auto p-3">
           <div className="mainGrid grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -104,7 +103,6 @@ const ProductScreen = () => {
           <RelatedProducts category={product?.category!} />
         </div>
       </div>
-      <Footer />
     </>
   );
 };

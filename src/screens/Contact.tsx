@@ -5,7 +5,6 @@ import Navbar from "../components/Navbar";
 const Contact = () => {
   return (
     <>
-      <Navbar />
       <div>
         <h1 className="mt-20 mb-48 text-center text-5xl font-bold">
           Get in Touch
@@ -53,7 +52,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

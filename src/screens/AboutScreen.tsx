@@ -6,7 +6,6 @@ const AboutScreen = () => {
 
   return (
     <>
-      <Navbar />
       <div className="relative bg-[#f8f6f3] min-h-[400px] -mt-28 z-[-20]">
         <h1 className="absolute top-1/2 left-1/2 text-2xl lg:text-5xl font-bold transform -translate-x-1/2 -translate-y-1/2">
           About Us

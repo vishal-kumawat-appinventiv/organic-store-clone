@@ -24,7 +24,6 @@ const CategoryScreen = () => {
 
   return (
     <>
-      <Navbar />
       <div className="bg-gray-100">
         <div className="lg:max-w-7xl px-10 xl:px-auto md:mx-auto">
           <div className="grid lg:grid-cols-3 py-12">
@@ -82,7 +81,6 @@ const CategoryScreen = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

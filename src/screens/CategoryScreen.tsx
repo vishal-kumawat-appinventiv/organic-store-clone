@@ -4,8 +4,6 @@ import { MyContext } from "../libs/MyContext";
 import { useContext } from "react";
 import ProductComponent from "../components/ProductComponent";
 import { ChevronRight } from "lucide-react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 
 const CategoryScreen = () => {
   const { categoryType } = useParams();

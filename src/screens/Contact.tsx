@@ -1,6 +1,4 @@
 import { Mail, MapPinCheckInside, Phone } from "lucide-react";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 
 const Contact = () => {
   return (

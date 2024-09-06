@@ -1,5 +1,3 @@
-import Navbar from "../components/Navbar";
-
 const AboutScreen = () => {
   const leafImage =
     "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/basil-leaf.png";

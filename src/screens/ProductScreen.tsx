@@ -1,9 +1,7 @@
 import { useParams } from "react-router-dom";
-import Navbar from "../components/Navbar";
 import { useContext, useMemo, useState } from "react";
 import { MyContext } from "../libs/MyContext";
 import { Search } from "lucide-react";
-import Footer from "../components/Footer";
 import RelatedProducts from "../components/RelatedProducts";
 
 const ProductScreen = () => {

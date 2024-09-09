@@ -1,24 +1,23 @@
-import { useContext } from "react";
-import { MyContext } from "../libs/MyContext";
 import { Link } from "react-router-dom";
 import { ProductType } from "../libs/types";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 const RelatedProducts = ({
   category,
 }: {
   category: ProductType["category"];
 }) => {
-  const { products } = useContext(MyContext);
-
+  const products = useSelector((state: RootState) => state.products);
   return (
     <>
       <div>
         <h1 className="my-5 text-3xl font-bold">Related products</h1>
         <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3">
           {products
-            .filter((p) => p.category === category)
+            .filter((p: ProductType) => p.category === category)
             .slice(0, 3)
-            .map((p) => {
+            .map((p: ProductType) => {
               return (
                 <div key={p.id} className="relative flex flex-col text-center">
                   <Link

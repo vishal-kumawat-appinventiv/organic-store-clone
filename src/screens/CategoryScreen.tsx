@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { ProductType } from "../libs/types";
 import { MyContext } from "../libs/MyContext";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ProductComponent from "../components/ProductComponent";
 import { ChevronRight } from "lucide-react";
 //@ts-ignore
@@ -12,28 +12,38 @@ const CategoryScreen = () => {
   const { categoryType } = useParams();
   const { products } = useContext(MyContext);
 
-  const productCategoryList =
-    categoryType === "shop"
-      ? products
-      : products?.filter((ele: ProductType) => {
-          return ele.category.toLowerCase() === categoryType;
-        });
-
-  const saleProducts = products?.filter((ele: ProductType) => {
-    return ele?.sale === true;
-  });
-
+  const [productCategoryList, setProductCategoryList] = useState<ProductType[]>(
+    []
+  );
+  const [searchProducts, setSearchProducts] = useState<ProductType[]>([]);
+  const [filterProducts, setFilterProducts] = useState<ProductType[]>([]);
   const [input, setInput] = useState("");
-  const [searchProducts, setSearchProducts] = useState<Array<ProductType>>([]);
   const [minValue, setMinValue] = useState(10);
   const [maxValue, setMaxValue] = useState(50);
+
+  useEffect(() => {
+    const updatedCategoryList =
+      categoryType === "shop"
+        ? products
+        : products?.filter(
+            (ele: ProductType) => ele.category.toLowerCase() === categoryType
+          );
+
+    setProductCategoryList(updatedCategoryList || []);
+    setSearchProducts([]);
+    setFilterProducts([]);
+  }, [categoryType, products]);
+
+  const saleProducts = products?.filter(
+    (ele: ProductType) => ele?.sale === true
+  );
 
   const handleSliderChange = (values: number[]) => {
     setMinValue(values[0]);
     setMaxValue(values[1]);
   };
 
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
   };
 
@@ -41,22 +51,29 @@ const CategoryScreen = () => {
     if (input === "") {
       setSearchProducts([]);
     } else {
-      const searchProds = productCategoryList?.filter((ele: ProductType) => {
-        return ele?.name.toLowerCase().includes(input.toLowerCase());
-      });
+      const searchProds = productCategoryList.filter((ele: ProductType) =>
+        ele?.name.toLowerCase().includes(input.toLowerCase())
+      );
       setSearchProducts(searchProds);
     }
   };
 
-  const [filterProducts, setFilterProducts] = useState<Array<ProductType>>([]);
-
   const handleFilterProd = () => {
     setSearchProducts([]);
-    const prods = productCategoryList?.filter((ele: ProductType) => {
-      return ele?.price >= minValue && ele?.price <= maxValue;
-    });
+    const prods = productCategoryList.filter(
+      (ele: ProductType) => ele?.price >= minValue && ele?.price <= maxValue
+    );
     setFilterProducts(prods);
   };
+
+  const displayedProducts =
+    searchProducts.length > 0
+      ? searchProducts
+      : filterProducts.length > 0
+      ? filterProducts
+      : filterProducts.length === 0
+      ? productCategoryList
+      : [];
 
   return (
     <>
@@ -65,22 +82,19 @@ const CategoryScreen = () => {
           <div className="grid lg:grid-cols-3 py-12">
             <div className="lg:block hidden border-r border-gray-600 border-opacity-25 py-5 px-16">
               <div className="gap-3 flex items-center">
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Search Products..."
-                    className="border p-2 max-w-[300px] w-full"
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div>
-                  <button
-                    onClick={handleSearch}
-                    className="p-2 bg-[#6a9739] rounded"
-                  >
-                    <ChevronRight color="#fff" />
-                  </button>
-                </div>
+                <input
+                  type="text"
+                  placeholder="Search Products..."
+                  className="border p-2 max-w-[300px] w-full"
+                  value={input}
+                  onChange={handleInputChange}
+                />
+                <button
+                  onClick={handleSearch}
+                  className="p-2 bg-[#6a9739] rounded"
+                >
+                  <ChevronRight color="#fff" />
+                </button>
               </div>
               <div>
                 <h3 className="text-[#8ec44e] text-2xl mt-5 font-bold">
@@ -96,7 +110,6 @@ const CategoryScreen = () => {
                     min={10}
                     max={100}
                     step={1}
-                    defaultValue={[10, 50]}
                     value={[minValue, maxValue]}
                     onInput={handleSliderChange}
                   />
@@ -116,48 +129,43 @@ const CategoryScreen = () => {
                   </button>
                 </div>
               </div>
-              <div className=" mt-20">
-                {saleProducts?.slice(0, 3)?.map((ele) => {
-                  return (
-                    <div key={ele?.id} className="mb-8">
-                      <ProductComponent data={ele} />
-                    </div>
-                  );
-                })}
+              <div className="mt-20">
+                {saleProducts?.slice(0, 3)?.map((ele) => (
+                  <div key={ele?.id} className="mb-8">
+                    <ProductComponent data={ele} />
+                  </div>
+                ))}
               </div>
             </div>
             <div className="col-span-2 py-5 lg:px-10">
               <div className="text-gray-500">
                 <Link to={"/"}>Home</Link> / {categoryType}
               </div>
-              <div>
-                <h3 className="text-[#8ec44e] text-6xl mt-5 font-bold capitalize">
-                  {categoryType}
-                </h3>
-              </div>
+              <h3 className="text-[#8ec44e] text-6xl mt-5 font-bold capitalize">
+                {categoryType}
+              </h3>
               <div className="flex justify-between mt-10">
-                <div>Showing all results</div>
                 <div>
-                  <select className="seleect bg-transparent">
-                    <option>Default Sort</option>
-                    <option>Sort by popularity</option>
-                    <option>Sort by price low to high</option>
-                    <option>Sort by price high to low</option>
-                  </select>
+                  Showing {displayedProducts.length}{" "}
+                  {displayedProducts.length === 1 ? "result" : "results"}
                 </div>
+                <select className="seleect bg-transparent">
+                  <option>Default Sort</option>
+                  <option>Sort by popularity</option>
+                  <option>Sort by price low to high</option>
+                  <option>Sort by price high to low</option>
+                </select>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
-                {searchProducts.length > 0
-                  ? searchProducts.map((ele) => (
-                      <ProductComponent key={ele?.id} data={ele} />
-                    ))
-                  : filterProducts.length > 0
-                  ? filterProducts.map((ele) => (
-                      <ProductComponent key={ele?.id} data={ele} />
-                    ))
-                  : productCategoryList?.map((ele) => (
-                      <ProductComponent key={ele?.id} data={ele} />
-                    ))}
+                {displayedProducts.length > 0 ? (
+                  displayedProducts.map((ele) => (
+                    <ProductComponent key={ele?.id} data={ele} />
+                  ))
+                ) : (
+                  <div className="text-center text-xl text-gray-500 col-span-3">
+                    No products found
+                  </div>
+                )}
               </div>
             </div>
           </div>

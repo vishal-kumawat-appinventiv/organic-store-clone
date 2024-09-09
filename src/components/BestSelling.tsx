@@ -1,12 +1,14 @@
-import { useContext, useMemo } from "react";
-import { MyContext } from "../libs/MyContext";
+import { useMemo } from "react";
 import ProductComponent from "./ProductComponent";
 import { leafImg } from "../libs/mock";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+import { ProductType } from "../libs/types";
 
 const BestSelling = () => {
-  const { products } = useContext(MyContext);
+  const products = useSelector((state: RootState) => state.products);
   const bestSellingProducts = useMemo(() => {
-    return products.filter((p) => p.bestSelling);
+    return products.filter((p: ProductType) => p.bestSelling);
   }, [products]);
 
   return (
@@ -23,7 +25,7 @@ const BestSelling = () => {
           />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-          {bestSellingProducts.map((p) => {
+          {bestSellingProducts.map((p: ProductType) => {
             return <ProductComponent key={p.id} data={p} />;
           })}
         </div>

@@ -12,7 +12,7 @@ export const cartReducer = (state = initialState, action: any) => {
     case SET_CART_ITEMS:
       return {
         ...state,
-        items: action.payload,
+        items: action.payload, 
       };
 
     case GET_TOTAL_PRICE:

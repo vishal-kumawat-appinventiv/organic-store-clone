@@ -17,6 +17,7 @@ const CategoryScreen = () => {
   );
   const [searchProducts, setSearchProducts] = useState<ProductType[]>([]);
   const [filterProducts, setFilterProducts] = useState<ProductType[]>([]);
+  const [filterApplied, setFilterApplied] = useState(false);
   const [input, setInput] = useState("");
   const [minValue, setMinValue] = useState(10);
   const [maxValue, setMaxValue] = useState(50);
@@ -32,6 +33,7 @@ const CategoryScreen = () => {
     setProductCategoryList(updatedCategoryList || []);
     setSearchProducts([]);
     setFilterProducts([]);
+    setFilterApplied(false);
   }, [categoryType, products]);
 
   const saleProducts = products?.filter(
@@ -60,20 +62,26 @@ const CategoryScreen = () => {
 
   const handleFilterProd = () => {
     setSearchProducts([]);
+    setFilterApplied(true);
     const prods = productCategoryList.filter(
       (ele: ProductType) => ele?.price >= minValue && ele?.price <= maxValue
     );
     setFilterProducts(prods);
   };
 
+  const handleClearFilter = () => {
+    setFilterApplied(false);
+    setFilterProducts([]);
+  };
+
   const displayedProducts =
     searchProducts.length > 0
       ? searchProducts
+      : filterApplied && filterProducts.length === 0
+      ? []
       : filterProducts.length > 0
       ? filterProducts
-      : filterProducts.length === 0
-      ? productCategoryList
-      : [];
+      : productCategoryList;
 
   return (
     <>
@@ -122,7 +130,7 @@ const CategoryScreen = () => {
                     Apply
                   </button>
                   <button
-                    onClick={() => setFilterProducts([])}
+                    onClick={handleClearFilter}
                     className="bg-[#6a9739] text-white p-2 mt-5 rounded"
                   >
                     Clear Filter

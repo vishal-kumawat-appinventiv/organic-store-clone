@@ -6,7 +6,7 @@ import AboutScreen from "../screens/AboutScreen";
 import Contact from "../screens/Contact";
 import NotFound from "../screens/NotFound";
 
-export const DummyProducts = [
+export const dummyProducts = [
   {
     id: 1,
     img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/coffee-asorted.jpg",
@@ -81,7 +81,7 @@ export const DummyProducts = [
   },
 ];
 
-export const BrandsLogo = [
+export const brandsLogo = [
   {
     img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/logo-4.svg",
   },
@@ -177,7 +177,7 @@ export const btnImgs = [
   },
 ];
 
-export const FruitsCardProducts = [
+export const fruitsCardProducts = [
   {
     name: "Farm Fresh Fruits",
     desc: "Ut sollicitudin quam vel purus tempus, vel eleifend felis varius.",
@@ -195,7 +195,7 @@ export const FruitsCardProducts = [
   },
 ];
 
-export const HeroCardsData = [
+export const heroCardsData = [
   {
     topic: "Free Shipping",
     desc: "Above $5 Only",

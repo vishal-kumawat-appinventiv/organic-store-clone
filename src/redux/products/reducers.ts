@@ -1,8 +1,8 @@
 import { ProductType } from "../../libs/types";
 import { SET_PRODUCTS } from "./actions";
-import { DummyProducts } from "../../libs/mock";
+import { dummyProducts } from "../../libs/mock";
 
-const initialState: ProductType[] = DummyProducts;
+const initialState: ProductType[] = dummyProducts;
 
 export const productsReducer = (state = initialState, action: any) => {
   switch (action.type) {

@@ -1,4 +1,4 @@
-import { FruitsCardProducts, leafDivider } from "../libs/mock";
+import { fruitsCardProducts, leafDivider } from "../libs/mock";
 import ShopNowBtn from "./ShopNowBtn";
 
 const FruitsCard = () => {
@@ -9,7 +9,7 @@ const FruitsCard = () => {
           <img width="150" height="90" src={leafDivider} alt="leaf" />
         </div>
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {FruitsCardProducts.map((f, idx) => {
+          {fruitsCardProducts.map((f, idx) => {
             return (
               <div
                 key={idx}

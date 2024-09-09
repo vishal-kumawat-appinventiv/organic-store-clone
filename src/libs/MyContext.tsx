@@ -1,6 +1,6 @@
 import { createContext, useState, ReactNode, useEffect } from "react";
 import { CartType, ProductType } from "./types";
-import { DummyProducts } from "./mock";
+import { dummyProducts } from "./mock";
 
 interface MyContextType {
   cart: CartType[];
@@ -20,7 +20,7 @@ export const MyContext = createContext<MyContextType>(defaultContextValue);
 
 export const MyProvider = ({ children }: { children: ReactNode }) => {
   const [products, setProducts] = useState<Array<ProductType>>([
-    ...DummyProducts,
+    ...dummyProducts,
   ]);
 
   const [cart, setCart] = useState<Array<CartType>>([]);

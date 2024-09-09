@@ -1,4 +1,4 @@
-import { BrandsLogo } from "../libs/mock";
+import { brandsLogo } from "../libs/mock";
 
 const BrandsDisplay = () => {
   return (
@@ -8,7 +8,7 @@ const BrandsDisplay = () => {
           <div>
             <h4 className="font-bold">Featured Brands:</h4>
           </div>
-          {BrandsLogo.map((b, idx) => {
+          {brandsLogo.map((b, idx) => {
             return (
               <div key={idx}>
                 <img src={b.img} alt="brand-logo" className="w-full h-full" />

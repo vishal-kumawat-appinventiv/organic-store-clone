@@ -1,4 +1,4 @@
-import { HeroCardsData } from "../libs/mock";
+import { heroCardsData } from "../libs/mock";
 
 const HeroCards = () => {
   return (
@@ -6,7 +6,7 @@ const HeroCards = () => {
       <div className="heroCards bg-black py-6">
         <div className="max-w-7xl mx-auto p-3">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {HeroCardsData.map((item, index) => {
+            {heroCardsData.map((item, index) => {
               const IconComponent = item.icon;
               return (
                 <div

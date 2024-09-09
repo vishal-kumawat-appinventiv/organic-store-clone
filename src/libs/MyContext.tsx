@@ -1,4 +1,4 @@
-import { createContext, useState, ReactNode } from "react";
+import { createContext, useState, ReactNode, useEffect } from "react";
 import { CartType, ProductType } from "./types";
 import { DummyProducts } from "./mock";
 
@@ -24,6 +24,17 @@ export const MyProvider = ({ children }: { children: ReactNode }) => {
   ]);
 
   const [cart, setCart] = useState<Array<CartType>>([]);
+  
+  useEffect(() => {
+    const cartData = localStorage.getItem("cart");
+    if (cartData) {
+      setCart(JSON.parse(cartData));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <MyContext.Provider value={{ cart, setCart, products, setProducts }}>

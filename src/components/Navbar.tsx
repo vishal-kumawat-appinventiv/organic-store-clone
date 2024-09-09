@@ -1,16 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, ShoppingBag, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import Drawer from "./Drawer";
 import { leftNavbarLinks, rightNavbarLinks } from "../libs/mock";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
-import { CartType } from "../libs/types";
+import { useDispatch } from "react-redux";
+import { getTotalCount, getTotalPrice } from "../redux/cart/actions";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const totalPrice = useSelector((state: RootState) => state.cart.totalPrice);
+  const totalCount = useSelector((state: RootState) => state.cart.totalCount);
 
-  const cart = useSelector((state: RootState) => state.cart);
+  useEffect(() => {
+    dispatch(getTotalPrice());
+    dispatch(getTotalCount());
+  }, [dispatch]);
 
   const logo =
     "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/organic-store-logo5.svg";
@@ -42,21 +49,11 @@ const Navbar = () => {
             </li>
           ))}
           <div className="flex items-center gap-4 cursor-pointer">
-            <p className="text-[#8bc34a] font-bold">
-              £
-              {cart.reduce(
-                (acc: number, item: CartType) =>
-                  acc + item.price * item.quantity,
-                0
-              )}
-            </p>
+            <p className="text-[#8bc34a] font-bold">£{totalPrice.toString()}</p>
             <div onClick={() => setDrawerOpen(true)} className="relative">
               <ShoppingBag size={18} color="#8bc34a" />
               <p className="absolute top-[-10px] right-[-12px] rounded-full bg-[#87c34a] px-[6px] text-black text-sm">
-                {cart.reduce(
-                  (total: number, item: CartType) => total + item.quantity,
-                  0
-                )}
+                {totalCount.toString()}
               </p>
             </div>
             <div>

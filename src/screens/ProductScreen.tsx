@@ -15,7 +15,7 @@ const ProductScreen = () => {
   const currentPath = prodName!.replace(/-/g, " ");
 
   const products = useSelector((state: RootState) => state.products);
-  const cart = useSelector((state: RootState) => state.cart);
+  const cart = useSelector((state: RootState) => state.cart.items);
 
   const [count, setCount] = useState(1);
 

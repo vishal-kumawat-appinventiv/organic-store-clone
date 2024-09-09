@@ -1,4 +1,9 @@
 import { NotebookTabs, PiggyBank, Recycle, Truck } from "lucide-react";
+import HomePage from "../screens/HomePage";
+import ProductScreen from "../screens/ProductScreen";
+import CategoryScreen from "../screens/CategoryScreen";
+import AboutScreen from "../screens/AboutScreen";
+import Contact from "../screens/Contact";
 
 export const DummyProducts = [
   {
@@ -221,6 +226,29 @@ export const leftNavbarLinks = [
 export const rightNavbarLinks = [
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
+];
+
+export const routes = [
+  {
+    path: "/",
+    component: HomePage,
+  },
+  {
+    path: "/about",
+    component: AboutScreen,
+  },
+  {
+    path: "/contact",
+    component: Contact,
+  },
+  {
+    path: "/product/:prodName",
+    component: ProductScreen,
+  },
+  {
+    path: "/category/:categoryType",
+    component: CategoryScreen,
+  },
 ];
 
 export const leafDivider =

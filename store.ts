@@ -1,5 +1,4 @@
-import { legacy_createStore as createStore } from "redux";
-import { combineReducers } from "redux";
+import { legacy_createStore as createStore, combineReducers } from "redux";
 import { cartReducer } from "./src/redux/cart/reducers";
 import { productsReducer } from "./src/redux/products/reducers";
 import { persistReducer, persistStore } from "redux-persist";
@@ -16,7 +15,10 @@ const rootReducer = combineReducers({
   products: productsReducer,
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer<ReturnType<typeof rootReducer>>(
+  persistConfig,
+  rootReducer
+);
 
 export const store = createStore(
   persistedReducer,
@@ -25,4 +27,5 @@ export const store = createStore(
 );
 
 export const persistor = persistStore(store);
+
 export type RootState = ReturnType<typeof rootReducer>;

@@ -11,13 +11,14 @@ import { getTotalCount, getTotalPrice } from "../redux/cart/actions";
 const Navbar = () => {
   const dispatch = useDispatch();
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const cart = useSelector((state: RootState) => state.cart.items);
   const totalPrice = useSelector((state: RootState) => state.cart.totalPrice);
   const totalCount = useSelector((state: RootState) => state.cart.totalCount);
 
   useEffect(() => {
     dispatch(getTotalPrice());
     dispatch(getTotalCount());
-  }, [dispatch]);
+  }, [cart, dispatch]);
 
   const logo =
     "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/organic-store-logo5.svg";

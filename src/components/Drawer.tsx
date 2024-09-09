@@ -1,6 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { X } from "lucide-react";
-import { MyContext } from "../libs/MyContext";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+import { CartType } from "../libs/types";
+import { useDispatch } from "react-redux";
+import { setCartItems } from "../redux/cart/actions";
 
 interface DrawerProps {
   isOpen: boolean;
@@ -8,12 +12,12 @@ interface DrawerProps {
 }
 
 const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose }) => {
-  const { cart, setCart } = useContext(MyContext);
+  const dispatch = useDispatch();
+  const cart = useSelector((state: RootState) => state.cart.items);
+  const totalPrice = useSelector((state: RootState) => state.cart.totalPrice);
 
-  const handleDeleteItem = (val: number) => {
-    return () => {
-      setCart((prev) => prev.filter((item) => item.id !== val));
-    };
+  const handleDeleteItem = (val: number) => () => {
+    dispatch(setCartItems(cart.filter((item: CartType) => item.id !== val)));
   };
 
   return (
@@ -44,7 +48,7 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose }) => {
             {cart.length === 0 ? (
               <div className="p-4 text-center">No items in cart</div>
             ) : (
-              cart.map((item) => (
+              cart.map((item: CartType) => (
                 <div
                   key={item.id}
                   className="flex items-center justify-between p-4 border-b"
@@ -76,9 +80,7 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose }) => {
           </div>
           <div className="flex items-center justify-between p-4 border-t border-b">
             <span className="font-bold">Subtotal</span>
-            <span className="font-bold">
-              £{cart.reduce((acc, item) => acc + item.price * item.quantity, 0)}
-            </span>
+            <span className="font-bold">£{totalPrice.toString()}</span>
           </div>
         </div>
         <div className="p-4">

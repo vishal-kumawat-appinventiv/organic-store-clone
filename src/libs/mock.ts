@@ -222,3 +222,18 @@ export const rightNavbarLinks = [
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
+
+export const leafDivider =
+  "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/basil-leaf.png";
+
+export const leafImg =
+  "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/07/logo-leaf-new.png";
+
+export const mainLogo =
+  "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/07/organic-store-white-logo.png";
+
+export const heroImage =
+  "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/organic-products-hero.png";
+
+export const heroBottomLeaf =
+  "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/leaves-free-img.png";

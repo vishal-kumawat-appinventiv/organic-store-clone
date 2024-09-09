@@ -1,15 +1,12 @@
-import { FruitsCardProducts } from "../libs/mock";
+import { FruitsCardProducts, leafDivider } from "../libs/mock";
 import ShopNowBtn from "./ShopNowBtn";
 
 const FruitsCard = () => {
-  const leafImage =
-    "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/basil-leaf.png";
-
   return (
     <>
       <div className="relative bg-[#f8f6f3] py-28">
         <div className="absolute top-[-30px] left-1/2 transform -translate-x-1/2">
-          <img width="150" height="90" src={leafImage} alt="leaf" />
+          <img width="150" height="90" src={leafDivider} alt="leaf" />
         </div>
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
           {FruitsCardProducts.map((f, idx) => {

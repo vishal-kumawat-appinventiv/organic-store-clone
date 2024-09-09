@@ -1,15 +1,13 @@
 import { useContext, useMemo } from "react";
 import { MyContext } from "../libs/MyContext";
 import ProductComponent from "./ProductComponent";
+import { leafImg } from "../libs/mock";
 
 const TrendingProd = () => {
   const { products } = useContext(MyContext);
   const TrendingProds = useMemo(() => {
     return products.filter((p) => p.trending);
   }, [products]);
-
-  const leafImg =
-    "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/07/logo-leaf-new.png";
 
   return (
     <>

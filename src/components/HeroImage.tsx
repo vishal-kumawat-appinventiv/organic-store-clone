@@ -1,20 +1,12 @@
 import { ShoppingCart } from "lucide-react";
+import { heroBottomLeaf, heroImage, leafImg } from "../libs/mock";
 
 const HeroImage = () => {
-  const heroImage =
-    "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/organic-products-hero.png";
-
-  const leafImage =
-    "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/07/logo-leaf-new.png";
-
-  const bottomLeaf =
-    "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/leaves-free-img.png";
-
   return (
     <>
       <div className="bg-[#faf9f7] relative">
         <div className="absolute opacity-40 bottom-0 right-0 w-[100px] md:w-[300px] lg:w-[500px]">
-          <img src={bottomLeaf} alt="bottom" />
+          <img src={heroBottomLeaf} alt="bottom" />
         </div>
         <div className="max-w-7xl w-full mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 py-32 px-3">
@@ -25,7 +17,7 @@ const HeroImage = () => {
               <div className="lg:absolute lg:right-0 lg:top-8 text-center md:text-left max-w-xl flex flex-col w-full gap-5">
                 <div className="leafImg relative p-5">
                   <img
-                    src={leafImage}
+                    src={leafImg}
                     alt="leafHero"
                     width={70}
                     className="absolute top-0 left-1/2 transform -translate-x-1/2 md:transform-none md:left-0"

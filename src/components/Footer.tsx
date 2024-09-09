@@ -1,16 +1,19 @@
 import { Facebook, Instagram, Twitter } from "lucide-react";
-import { btnImgs, moreLinks, quickLinks, siteLinks } from "../libs/mock";
+import {
+  btnImgs,
+  mainLogo,
+  moreLinks,
+  quickLinks,
+  siteLinks,
+} from "../libs/mock";
 
 const Footer = () => {
-  const logoImg =
-    "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/07/organic-store-white-logo.png";
-
   return (
     <>
       <div className="bg-black text-[#aeaeae]">
         <div className="mainGrid max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 py-20 px-3 text-center md:text-left">
           <div className="logoCol">
-            <img src={logoImg} alt="img" />
+            <img src={mainLogo} alt="img" />
             <p className="mt-10 italic mr-0 md:mr-24 font-bold">
               Maecenas mi justo, interdum at consectetur vel, tristique et arcu.
               Ut quis eros blandit, ultrices diam in, elementum ex. Suspendisse

@@ -1,12 +1,14 @@
-import { useContext, useMemo } from "react";
-import { MyContext } from "../libs/MyContext";
+import { useMemo } from "react";
 import ProductComponent from "./ProductComponent";
 import { leafImg } from "../libs/mock";
+import { RootState } from "../../store";
+import { useSelector } from "react-redux";
+import { ProductType } from "../libs/types";
 
 const TrendingProd = () => {
-  const { products } = useContext(MyContext);
+  const products = useSelector((state: RootState) => state.products);
   const TrendingProds = useMemo(() => {
-    return products.filter((p) => p.trending);
+    return products.filter((p: ProductType) => p.trending);
   }, [products]);
 
   return (
@@ -21,7 +23,7 @@ const TrendingProd = () => {
           />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-          {TrendingProds.map((p) => {
+          {TrendingProds.map((p: ProductType) => {
             return <ProductComponent key={p.id} data={p} />;
           })}
         </div>

@@ -6,11 +6,7 @@ const initialState: CartType[] = [];
 export const cartReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case SET_CART_ITEMS:
-      // TODO check if old cart items are already in the cart
-      return {
-        ...state,
-        ...action.payload,
-      };
+      return action.payload;
 
     case GET_TOTAL_PRICE:
       return state.reduce(

@@ -1,44 +1,56 @@
 import { useParams } from "react-router-dom";
-import { useContext, useMemo, useState } from "react";
-import { MyContext } from "../libs/MyContext";
+import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import RelatedProducts from "../components/RelatedProducts";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+import { CartType, ProductType } from "../libs/types";
+import { useDispatch } from "react-redux";
+import { setCartItems } from "../redux/cart/actions";
 
 const ProductScreen = () => {
+  const dispatch = useDispatch();
+
   const { prodName } = useParams();
   const currentPath = prodName!.replace(/-/g, " ");
-  const { products, setCart, cart } = useContext(MyContext);
+
+  const products = useSelector((state: RootState) => state.products);
+  const cart = useSelector((state: RootState) => state.cart);
 
   const [count, setCount] = useState(1);
 
   const product = useMemo(() => {
-    return products.find((product) =>
+    return products.find((product: ProductType) =>
       product.name.toLowerCase().includes(currentPath)
     );
   }, [products, currentPath]);
 
   const handleAddToCart = () => {
-    const existingItem = cart.find((item) => item.id === product?.id);
+    const existingItem = cart.find((item: CartType) => item.id === product?.id);
 
     if (existingItem) {
-      setCart(
-        cart.map((item) =>
-          item.id === product?.id
-            ? { ...item, quantity: item.quantity + count }
-            : item
+      dispatch(
+        setCartItems(
+          cart.map((item: CartType) =>
+            item.id === product?.id
+              ? { ...item, quantity: item.quantity + count }
+              : item
+          )
         )
       );
     } else {
-      setCart([
-        ...cart,
-        {
-          id: product?.id!,
-          img: product?.img!,
-          productName: product?.name!,
-          quantity: count!,
-          price: product?.price!,
-        },
-      ]);
+      dispatch(
+        setCartItems([
+          ...cart,
+          {
+            id: product?.id!,
+            img: product?.img!,
+            productName: product?.name!,
+            quantity: count!,
+            price: product?.price!,
+          },
+        ])
+      );
     }
   };
 

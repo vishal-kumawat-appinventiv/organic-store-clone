@@ -4,6 +4,7 @@ import ProductScreen from "../screens/ProductScreen";
 import CategoryScreen from "../screens/CategoryScreen";
 import AboutScreen from "../screens/AboutScreen";
 import Contact from "../screens/Contact";
+import NotFound from "../screens/NotFound";
 
 export const DummyProducts = [
   {
@@ -248,6 +249,10 @@ export const routes = [
   {
     path: "/category/:categoryType",
     component: CategoryScreen,
+  },
+  {
+    path: "*",
+    component: NotFound,
   },
 ];
 

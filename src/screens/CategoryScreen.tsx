@@ -1,17 +1,17 @@
 import { Link, useParams } from "react-router-dom";
 import { ProductType } from "../libs/types";
-import { MyContext } from "../libs/MyContext";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ProductComponent from "../components/ProductComponent";
 import { ChevronRight } from "lucide-react";
 //@ts-ignore
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 const CategoryScreen = () => {
   const { categoryType } = useParams();
-  const { products } = useContext(MyContext);
-
+  const products = useSelector((state: RootState) => state.products);
   const [productCategoryList, setProductCategoryList] = useState<ProductType[]>(
     []
   );
@@ -138,7 +138,7 @@ const CategoryScreen = () => {
                 </div>
               </div>
               <div className="mt-20">
-                {saleProducts?.slice(0, 3)?.map((ele) => (
+                {saleProducts?.slice(0, 3)?.map((ele: ProductType) => (
                   <div key={ele?.id} className="mb-8">
                     <ProductComponent data={ele} />
                   </div>

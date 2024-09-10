@@ -4,6 +4,8 @@ import { leafImg } from "../libs/mock";
 import { RootState } from "../../store";
 import { useSelector } from "react-redux";
 import { ProductType } from "../libs/types";
+import Loading from "./Loading";
+import Error from "./Error";
 
 const TrendingProd = () => {
   const {
@@ -18,17 +20,9 @@ const TrendingProd = () => {
   return (
     <>
       {loading ? (
-        <>
-          <div className="my-28 max-w-7xl mx-auto p-3">
-            <h1 className="text-center text-4xl font-bold">Loading...</h1>
-          </div>
-        </>
+        <Loading />
       ) : error ? (
-        <div>
-          <h1 className="text-center text-4xl font-bold">
-            Error fetching data : {error}
-          </h1>
-        </div>
+        <Error error={error as string} />
       ) : (
         <>
           <div className="my-28 max-w-7xl mx-auto p-3">

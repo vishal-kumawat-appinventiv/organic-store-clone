@@ -7,6 +7,8 @@ import { RootState } from "../../store";
 import { CartType, ProductType } from "../libs/types";
 import { useDispatch } from "react-redux";
 import { setCartItems } from "../redux/cart/actions";
+import Loading from "../components/Loading";
+import Error from "../components/Error";
 
 const ProductScreen = () => {
   const dispatch = useDispatch();
@@ -64,13 +66,9 @@ const ProductScreen = () => {
       <div className="bg-[#f8f6f3] py-20">
         <div className="max-w-7xl mx-auto p-3">
           {loading ? (
-            <div className="my-10">
-              <h1 className="text-2xl font-bold text-center">Loading...</h1>
-            </div>
+            <Loading />
           ) : error ? (
-            <div className="my-10">
-              <h1 className="text-2xl font-bold text-center">Error: {error}</h1>
-            </div>
+            <Error error={error as string} />
           ) : (
             <>
               <div className="mainGrid grid grid-cols-1 md:grid-cols-2 gap-8">

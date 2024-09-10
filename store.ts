@@ -17,7 +17,7 @@ const composeEnhancers =
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["cart", "products"],
+  whitelist: ["cart"],
 };
 
 const rootReducer = combineReducers({

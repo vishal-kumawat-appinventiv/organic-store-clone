@@ -14,8 +14,17 @@ const ProductScreen = () => {
   const { prodName } = useParams();
   const currentPath = prodName!.replace(/-/g, " ");
 
-  const products = useSelector((state: RootState) => state.products);
-  const cart = useSelector((state: RootState) => state.cart.items);
+  const {
+    items: products,
+    error,
+    loading,
+  } = useSelector((state: RootState) => state.products);
+
+  const {
+    items: cart,
+    error: cartError,
+    loading: cartLoading,
+  } = useSelector((state: RootState) => state.cart);
 
   const [count, setCount] = useState(1);
 
@@ -58,59 +67,73 @@ const ProductScreen = () => {
     <>
       <div className="bg-[#f8f6f3] py-20">
         <div className="max-w-7xl mx-auto p-3">
-          <div className="mainGrid grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="col1 relative">
-              <img src={product?.img} alt="img" />
-              <p className="bg-white rounded-full p-2 absolute top-2 right-2">
-                <Search />
-              </p>
+          {loading ? (
+            <div className="my-10">
+              <h1 className="text-2xl font-bold text-center">Error: {error}</h1>
             </div>
-            <div className="col2">
-              <div className="flex flex-col gap-4">
-                <div>
-                  <h1 className="font-bold text-3xl">{product?.name}</h1>
-                </div>
-                <div className="flex items-center">
-                  <p className="font-bold text-2xl">${product?.price}</p>
-                  <p className="text-gray-600">+ Free Shipping</p>
-                </div>
-                <div>
-                  <p className="text-gray-600">{product?.desc}</p>
-                </div>
-                <div className="flex items-center">
-                  <button
-                    className="px-3 py-1 border-2 border-gray-200 hover:bg-[#6a9739]"
-                    onClick={() => count > 1 && setCount(count - 1)}
-                  >
-                    -
-                  </button>
-                  <p className="px-3 py-1 border-t-2 border-b-2 border-l-0 border-r-0 border-gray-200">
-                    {count}
+          ) : error || cartError ? (
+            <div className="my-10">
+              <h1 className="text-2xl font-bold text-center">
+                Error: {error || cartError}
+              </h1>
+            </div>
+          ) : (
+            <>
+              <div className="mainGrid grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="col1 relative">
+                  <img src={product?.img} alt="img" />
+                  <p className="bg-white rounded-full p-2 absolute top-2 right-2">
+                    <Search />
                   </p>
-                  <button
-                    className="px-3 py-1 border-2 border-gray-200 hover:bg-[#6a9739]"
-                    onClick={() => setCount(count + 1)}
-                  >
-                    +
-                  </button>
-                  <button
-                    onClick={handleAddToCart}
-                    className="px-10 rounded py-1 bg-[#6a9739] text-white ml-3"
-                  >
-                    Add to Cart
-                  </button>
                 </div>
-                <div className="border-t">
-                  <p>Category: {product?.category}</p>
+                <div className="col2">
+                  <div className="flex flex-col gap-4">
+                    <div>
+                      <h1 className="font-bold text-3xl">{product?.name}</h1>
+                    </div>
+                    <div className="flex items-center">
+                      <p className="font-bold text-2xl">${product?.price}</p>
+                      <p className="text-gray-600">+ Free Shipping</p>
+                    </div>
+                    <div>
+                      <p className="text-gray-600">{product?.desc}</p>
+                    </div>
+                    <div className="flex items-center">
+                      <button
+                        className="px-3 py-1 border-2 border-gray-200 hover:bg-[#6a9739]"
+                        onClick={() => count > 1 && setCount(count - 1)}
+                      >
+                        -
+                      </button>
+                      <p className="px-3 py-1 border-t-2 border-b-2 border-l-0 border-r-0 border-gray-200">
+                        {count}
+                      </p>
+                      <button
+                        className="px-3 py-1 border-2 border-gray-200 hover:bg-[#6a9739]"
+                        onClick={() => setCount(count + 1)}
+                      >
+                        +
+                      </button>
+                      <button
+                        onClick={handleAddToCart}
+                        className="px-10 rounded py-1 bg-[#6a9739] text-white ml-3"
+                      >
+                        {cartLoading ? "Adding..." : "Add to Cart"}
+                      </button>
+                    </div>
+                    <div className="border-t">
+                      <p>Category: {product?.category}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="border-t mt-5 flex flex-col">
-            <h4 className="text-xl mt-3">Description</h4>
-            <p className="text-gray-600">{product?.desc}</p>
-          </div>
-          <RelatedProducts category={product?.category!} />
+              <div className="border-t mt-5 flex flex-col">
+                <h4 className="text-xl mt-3">Description</h4>
+                <p className="text-gray-600">{product?.desc}</p>
+              </div>
+              <RelatedProducts category={product?.category!} />
+            </>
+          )}
         </div>
       </div>
     </>

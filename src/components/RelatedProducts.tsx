@@ -8,7 +8,7 @@ const RelatedProducts = ({
 }: {
   category: ProductType["category"];
 }) => {
-  const products = useSelector((state: RootState) => state.products);
+  const { items: products } = useSelector((state: RootState) => state.products);
   return (
     <>
       <div>

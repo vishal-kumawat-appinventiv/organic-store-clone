@@ -20,11 +20,7 @@ const ProductScreen = () => {
     loading,
   } = useSelector((state: RootState) => state.products);
 
-  const {
-    items: cart,
-    error: cartError,
-    loading: cartLoading,
-  } = useSelector((state: RootState) => state.cart);
+  const cart = useSelector((state: RootState) => state?.cart?.items);
 
   const [count, setCount] = useState(1);
 
@@ -71,11 +67,9 @@ const ProductScreen = () => {
             <div className="my-10">
               <h1 className="text-2xl font-bold text-center">Error: {error}</h1>
             </div>
-          ) : error || cartError ? (
+          ) : error ? (
             <div className="my-10">
-              <h1 className="text-2xl font-bold text-center">
-                Error: {error || cartError}
-              </h1>
+              <h1 className="text-2xl font-bold text-center">Error: {error}</h1>
             </div>
           ) : (
             <>
@@ -118,7 +112,7 @@ const ProductScreen = () => {
                         onClick={handleAddToCart}
                         className="px-10 rounded py-1 bg-[#6a9739] text-white ml-3"
                       >
-                        {cartLoading ? "Adding..." : "Add to Cart"}
+                        Add to Cart
                       </button>
                     </div>
                     <div className="border-t">

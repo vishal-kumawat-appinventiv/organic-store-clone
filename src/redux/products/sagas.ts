@@ -1,9 +1,5 @@
-import { takeEvery, put, call } from "redux-saga/effects";
-import {
-  FETCH_PRODUCTS,
-  fetchProductsSuccess,
-  fetchProductsError,
-} from "./actions";
+import { put, call } from "redux-saga/effects";
+import { fetchProductsSuccess, fetchProductsError } from "./actions";
 import { ProductType } from "../../libs/types";
 
 const fetchProductsApi = async (): Promise<ProductType[]> => {
@@ -18,15 +14,11 @@ const fetchProductsApi = async (): Promise<ProductType[]> => {
   }
 };
 
-function* loadProducts() {
+export function* loadProducts() {
   try {
     const products: ProductType[] = yield call(fetchProductsApi);
     yield put(fetchProductsSuccess(products));
   } catch (error) {
     yield put(fetchProductsError("Failed to load products"));
   }
-}
-
-export function* watchLoadProducts() {
-  yield takeEvery(FETCH_PRODUCTS, loadProducts);
 }

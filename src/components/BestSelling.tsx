@@ -1,14 +1,11 @@
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import ProductComponent from "./ProductComponent";
 import { leafImg } from "../libs/mock";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { ProductType } from "../libs/types";
-import { useDispatch } from "react-redux";
-import { fetchProducts } from "../redux/products/actions";
 
 const BestSelling = () => {
-  const dispatch = useDispatch();
   const {
     items: products,
     error,
@@ -17,10 +14,6 @@ const BestSelling = () => {
   const bestSellingProducts = useMemo(() => {
     return products.filter((p: ProductType) => p.bestSelling);
   }, [products]);
-
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
 
   return (
     <>

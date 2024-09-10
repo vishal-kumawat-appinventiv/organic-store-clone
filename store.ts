@@ -10,12 +10,12 @@ import storage from "redux-persist/lib/storage";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./src/redux/rootSaga";
 
-const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+// const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["cart" , "products"],
+  whitelist: ["cart", "products"],
 };
 
 const rootReducer = combineReducers({
@@ -32,7 +32,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 export const store = createStore(
   persistedReducer,
-  composeEnhancers(applyMiddleware(sagaMiddleware))
+  applyMiddleware(sagaMiddleware)
 );
 
 sagaMiddleware.run(rootSaga);

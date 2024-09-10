@@ -1,6 +1,5 @@
 import { takeEvery, put, call } from "redux-saga/effects";
 import {
-  fetchProducts,
   FETCH_PRODUCTS,
   fetchProductsSuccess,
   fetchProductsError,

@@ -11,7 +11,7 @@ import { RootState } from "../../store";
 
 const CategoryScreen = () => {
   const { categoryType } = useParams();
-  const products = useSelector((state: RootState) => state.products);
+  const { items: products } = useSelector((state: RootState) => state.products);
   const [productCategoryList, setProductCategoryList] = useState<ProductType[]>(
     []
   );

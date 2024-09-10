@@ -24,7 +24,11 @@ export function* loadProducts() {
     const products: ProductType[] = yield call(fetchProductsApi);
     yield put(fetchProductsSuccess(products));
   } catch (error) {
-    yield put(fetchProductsError("Failed to load products"));
+    yield put(
+      fetchProductsError(
+        error instanceof Error ? error.message : "An unknown error occured"
+      )
+    );
   }
 }
 

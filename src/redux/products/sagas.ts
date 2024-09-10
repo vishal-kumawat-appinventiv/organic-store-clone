@@ -1,8 +1,12 @@
-import { put, call } from "redux-saga/effects";
-import { fetchProductsSuccess, fetchProductsError } from "./actions";
+import { put, call, takeEvery } from "redux-saga/effects";
+import {
+  FETCH_PRODUCTS,
+  fetchProductsSuccess,
+  fetchProductsError,
+} from "./actions";
 import { ProductType } from "../../libs/types";
 
-const fetchProductsApi = async (): Promise<ProductType[]> => {
+const fetchProductsApi = async () => {
   try {
     const response = await fetch(
       "https://run.mocky.io/v3/fad4827e-433c-4e1b-af10-08548ded3894"
@@ -21,4 +25,8 @@ export function* loadProducts() {
   } catch (error) {
     yield put(fetchProductsError("Failed to load products"));
   }
+}
+
+export function* watchLoadProducts() {
+  yield takeEvery(FETCH_PRODUCTS, loadProducts);
 }

@@ -3,8 +3,6 @@ import { CartType } from "../../libs/types";
 export const SET_CART_ITEMS = "SET_CART_ITEMS";
 export const GET_TOTAL_PRICE = "GET_TOTAL_PRICE";
 export const GET_TOTAL_COUNT = "GET_TOTAL_COUNT";
-export const FETCH_CART_ITEMS = "FETCH_CART_ITEMS";
-export const FETCH_CART_ITEMS_ERROR = "FETCH_CART_ITEMS_ERROR";
 
 export const setCartItems = (items: CartType[]) => ({
   type: SET_CART_ITEMS,
@@ -17,13 +15,4 @@ export const getTotalPrice = () => ({
 
 export const getTotalCount = () => ({
   type: GET_TOTAL_COUNT,
-});
-
-export const fetchCartItems = () => ({
-  type: FETCH_CART_ITEMS,
-});
-
-export const fetchCartItemsError = (error: string) => ({
-  type: FETCH_CART_ITEMS_ERROR,
-  payload: error,
 });

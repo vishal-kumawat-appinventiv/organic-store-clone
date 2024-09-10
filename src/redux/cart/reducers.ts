@@ -1,22 +1,14 @@
 import { CartType } from "../../libs/types";
-import { SET_CART_ITEMS, GET_TOTAL_PRICE, GET_TOTAL_COUNT, FETCH_CART_ITEMS, FETCH_CART_ITEMS_ERROR } from "./actions";
+import { SET_CART_ITEMS, GET_TOTAL_PRICE, GET_TOTAL_COUNT } from "./actions";
 
 const initialState = {
   items: [] as CartType[],
   totalPrice: 0,
   totalCount: 0,
-  loading: false,
-  error: null as string | null,
 };
 
 export const cartReducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case FETCH_CART_ITEMS:
-      return {
-        ...state,
-        loading: true,
-        error: null,
-      };
     case SET_CART_ITEMS:
       return {
         ...state,
@@ -40,12 +32,6 @@ export const cartReducer = (state = initialState, action: any) => {
       return {
         ...state,
         totalCount,
-      };
-    case FETCH_CART_ITEMS_ERROR:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload,
       };
     default:
       return state;

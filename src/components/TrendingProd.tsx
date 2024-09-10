@@ -1,15 +1,22 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import ProductComponent from "./ProductComponent";
 import { leafImg } from "../libs/mock";
 import { RootState } from "../../store";
 import { useSelector } from "react-redux";
 import { ProductType } from "../libs/types";
+import { fetchProducts } from "../redux/products/actions";
+import { useDispatch } from "react-redux";
 
 const TrendingProd = () => {
-  const products = useSelector((state: RootState) => state.products);
+  const dispatch = useDispatch();
+  const products = useSelector((state: RootState) => state.products.items);
   const TrendingProds = useMemo(() => {
     return products.filter((p: ProductType) => p.trending);
   }, [products]);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   return (
     <>

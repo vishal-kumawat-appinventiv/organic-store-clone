@@ -1,8 +1,16 @@
-import { legacy_createStore as createStore, combineReducers } from "redux";
+import {
+  legacy_createStore as createStore,
+  applyMiddleware,
+  combineReducers,
+} from "redux";
 import { cartReducer } from "./src/redux/cart/reducers";
 import { productsReducer } from "./src/redux/products/reducers";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import createSagaMiddleware from "redux-saga";
+import rootSaga from "./src/redux/rootSaga";
+
+const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 
 const persistConfig = {
   key: "root",
@@ -20,12 +28,14 @@ const persistedReducer = persistReducer<ReturnType<typeof rootReducer>>(
   rootReducer
 );
 
+const sagaMiddleware = createSagaMiddleware();
+
 export const store = createStore(
   persistedReducer,
-  // @ts-ignore
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeEnhancers(applyMiddleware(sagaMiddleware))
 );
 
-export const persistor = persistStore(store);
+sagaMiddleware.run(rootSaga);
 
+export const persistor = persistStore(store);
 export type RootState = ReturnType<typeof rootReducer>;

@@ -3,6 +3,7 @@ import {
   FETCH_PRODUCTS,
   fetchProductsSuccess,
   fetchProductsError,
+  initLoadProducts,
 } from "./actions";
 import { ProductType } from "../../libs/types";
 
@@ -25,6 +26,11 @@ export function* loadProducts() {
   } catch (error) {
     yield put(fetchProductsError("Failed to load products"));
   }
+}
+
+export function* loadProductsOnSagaInit() {
+  yield put(initLoadProducts());
+  yield call(loadProducts);
 }
 
 export function* watchLoadProducts() {

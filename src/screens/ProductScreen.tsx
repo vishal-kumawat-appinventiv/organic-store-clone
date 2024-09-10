@@ -65,7 +65,7 @@ const ProductScreen = () => {
         <div className="max-w-7xl mx-auto p-3">
           {loading ? (
             <div className="my-10">
-              <h1 className="text-2xl font-bold text-center">Error: {error}</h1>
+              <h1 className="text-2xl font-bold text-center">Loading...</h1>
             </div>
           ) : error ? (
             <div className="my-10">

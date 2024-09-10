@@ -13,8 +13,9 @@ interface DrawerProps {
 
 const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
-  const cart = useSelector((state: RootState) => state.cart.items);
-  const totalPrice = useSelector((state: RootState) => state.cart.totalPrice);
+  const { items: cart, totalPrice } = useSelector(
+    (state: RootState) => state.cart
+  );
 
   const handleDeleteItem = (val: number) => () => {
     dispatch(setCartItems(cart.filter((item: CartType) => item.id !== val)));

@@ -11,9 +11,11 @@ import { getTotalCount, getTotalPrice } from "../redux/cart/actions";
 const Navbar = () => {
   const dispatch = useDispatch();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const cart = useSelector((state: RootState) => state.cart.items);
-  const totalPrice = useSelector((state: RootState) => state.cart.totalPrice);
-  const totalCount = useSelector((state: RootState) => state.cart.totalCount);
+  const {
+    items: cart,
+    totalCount,
+    totalPrice,
+  } = useSelector((state: RootState) => state.cart);
 
   useEffect(() => {
     dispatch(getTotalPrice());
@@ -63,7 +65,7 @@ const Navbar = () => {
           </div>
         </ul>
         <div className="flex items-center gap-3 lg:hidden">
-          <p className="text-[#8bc34a] font-bold">£225.00</p>
+          <p className="text-[#8bc34a] font-bold">£{totalPrice.toString()}</p>
           <div onClick={() => setDrawerOpen(true)}>
             <ShoppingBag size={18} color="#8bc34a" />
           </div>

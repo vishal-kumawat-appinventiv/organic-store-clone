@@ -12,7 +12,10 @@ import createSagaMiddleware from "redux-saga";
 import rootSaga from "./src/redux/rootSaga";
 
 const composeEnhancers =
-  (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  process.env.NODE_ENV !== "production" &&
+  (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    : compose;
 
 const persistConfig = {
   key: "root",

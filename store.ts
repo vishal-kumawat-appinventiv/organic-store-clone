@@ -8,8 +8,7 @@ import { cartReducer } from "./src/redux/cart/reducers";
 import { productsReducer } from "./src/redux/products/reducers";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import createSagaMiddleware from "redux-saga";
-import rootSaga from "./src/redux/rootSaga";
+import { thunk } from "redux-thunk";
 
 const composeEnhancers =
   process.env.NODE_ENV !== "production" &&
@@ -28,19 +27,13 @@ const rootReducer = combineReducers({
   products: productsReducer,
 });
 
-const persistedReducer = persistReducer<ReturnType<typeof rootReducer>>(
-  persistConfig,
-  rootReducer
-);
-
-const sagaMiddleware = createSagaMiddleware();
-
 export const store = createStore(
-  persistedReducer,
-  composeEnhancers(applyMiddleware(sagaMiddleware))
+  persistReducer(persistConfig, rootReducer),
+  composeEnhancers(applyMiddleware(thunk))
 );
 
-sagaMiddleware.run(rootSaga);
+export type RootState = ReturnType<typeof rootReducer>;
+
+export type AppDispatch = typeof store.dispatch;
 
 export const persistor = persistStore(store);
-export type RootState = ReturnType<typeof rootReducer>;

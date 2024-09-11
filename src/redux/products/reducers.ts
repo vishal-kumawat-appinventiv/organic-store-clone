@@ -3,7 +3,6 @@ import {
   FETCH_PRODUCTS,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_ERROR,
-  INIT_LOAD_PRODUCTS,
 } from "./actions";
 
 const initialState = {
@@ -14,7 +13,6 @@ const initialState = {
 
 export const productsReducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case INIT_LOAD_PRODUCTS:
     case FETCH_PRODUCTS:
       return {
         ...state,

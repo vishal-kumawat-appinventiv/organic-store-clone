@@ -11,6 +11,7 @@ const App = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
+    console.log("Dispatch Products Thunk");
     dispatch(fetchProductsThunk());
   }, [dispatch]);
 

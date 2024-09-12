@@ -1,43 +1,35 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Search } from "lucide-react";
 import RelatedProducts from "../components/RelatedProducts";
 import { useSelector } from "react-redux";
-import { CartType, ProductType } from "../libs/types";
+import { CartType } from "../libs/types";
 import { useDispatch } from "react-redux";
 import { setCartItems } from "../redux/cart/actions";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
 import { cartSelectors } from "../redux/cart/selectors";
-import {
-  selectError,
-  selectLoading,
-  selectProducts,
-} from "../redux/products/selectors";
+import { productsSelectors } from "../redux/products/selectors";
+import { RootState } from "../../store";
 
 const ProductScreen = () => {
   const dispatch = useDispatch();
-
   const { prodName } = useParams();
-  const currentPath = prodName!.replace(/-/g, " ");
-
-  const loading = useSelector(selectLoading);
-  const error = useSelector(selectError);
-  const products = useSelector(selectProducts);
-
-  const cart = useSelector(cartSelectors?.selectCartItems);
 
   const [count, setCount] = useState(1);
+  const currentPath = prodName!.replace(/-/g, " ");
+
+  const loading = useSelector(productsSelectors?.selectLoading);
+  const error = useSelector(productsSelectors?.selectError);
+  const cart = useSelector(cartSelectors?.selectCartItems);
 
   useEffect(() => {
     setCount(1);
   }, [prodName]);
 
-  const product = useMemo(() => {
-    return products.find((product: ProductType) =>
-      product.name.toLowerCase().includes(currentPath)
-    );
-  }, [products, currentPath]);
+  const product = useSelector((state: RootState) =>
+    productsSelectors.selectProductByName(state, currentPath)
+  );
 
   const handleAddToCart = () => {
     const existingItem = cart.find((item: CartType) => item.id === product?.id);

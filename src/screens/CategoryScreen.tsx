@@ -9,17 +9,13 @@ import "react-range-slider-input/dist/style.css";
 import { useSelector } from "react-redux";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
-import {
-  selectError,
-  selectLoading,
-  selectProducts,
-} from "../redux/products/selectors";
+import { productsSelectors } from "../redux/products/selectors";
 
 const CategoryScreen = () => {
   const { categoryType } = useParams();
-  const loading = useSelector(selectLoading);
-  const error = useSelector(selectError);
-  const products = useSelector(selectProducts);
+  const loading = useSelector(productsSelectors?.selectLoading);
+  const error = useSelector(productsSelectors?.selectError);
+  const products = useSelector(productsSelectors?.selectProducts);
   const [productCategoryList, setProductCategoryList] = useState<ProductType[]>(
     []
   );

@@ -4,16 +4,12 @@ import { useSelector } from "react-redux";
 import { ProductType } from "../libs/types";
 import Loading from "./Loading";
 import Error from "./Error";
-import {
-  selectError,
-  selectLoading,
-  selectTrendingProducts,
-} from "../redux/products/selectors";
+import { productsSelectors } from "../redux/products/selectors";
 
 const TrendingProd = () => {
-  const loading = useSelector(selectLoading);
-  const error = useSelector(selectError);
-  const TrendingProds = useSelector(selectTrendingProducts);
+  const loading = useSelector(productsSelectors?.selectLoading);
+  const error = useSelector(productsSelectors?.selectError);
+  const TrendingProds = useSelector(productsSelectors?.selectTrendingProducts);
 
   return (
     <>

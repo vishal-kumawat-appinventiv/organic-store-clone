@@ -4,16 +4,14 @@ import { useSelector } from "react-redux";
 import { ProductType } from "../libs/types";
 import Loading from "./Loading";
 import Error from "./Error";
-import {
-  selectBestSellingProducts,
-  selectError,
-  selectLoading,
-} from "../redux/products/selectors";
+import { productsSelectors } from "../redux/products/selectors";
 
 const BestSelling = () => {
-  const loading = useSelector(selectLoading);
-  const error = useSelector(selectError);
-  const bestSellingProducts = useSelector(selectBestSellingProducts);
+  const loading = useSelector(productsSelectors?.selectLoading);
+  const error = useSelector(productsSelectors?.selectError);
+  const bestSellingProducts = useSelector(
+    productsSelectors?.selectBestSellingProducts
+  );
 
   return (
     <>

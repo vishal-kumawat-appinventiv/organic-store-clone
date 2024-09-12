@@ -11,8 +11,22 @@ const selectMemoizedCartItems = createSelector(
   (items: CartType[]) => items
 );
 
+const selectMemoizedCartTotalPrice = createSelector(
+  [selectCartTotalPrice],
+  (totalPrice: number) => totalPrice
+);
+
+const selectMemoizedCartTotalCount = createSelector(
+  [selectCartTotalCount],
+  (totalCount: number) => totalCount
+);
+
 export const selectCartData = createSelector(
-  [selectMemoizedCartItems, selectCartTotalPrice, selectCartTotalCount],
+  [
+    selectMemoizedCartItems,
+    selectMemoizedCartTotalPrice,
+    selectMemoizedCartTotalCount,
+  ],
   (items, totalPrice, totalCount) => ({
     items,
     totalPrice,

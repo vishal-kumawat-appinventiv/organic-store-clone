@@ -10,12 +10,16 @@ import { useSelector } from "react-redux";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
 import { productsSelectors } from "../redux/products/selectors";
+import { RootState } from "../../store";
 
 const CategoryScreen = () => {
   const { categoryType } = useParams();
   const loading = useSelector(productsSelectors?.selectLoading);
   const error = useSelector(productsSelectors?.selectError);
   const products = useSelector(productsSelectors?.selectProducts);
+  const updatedCategoryList = useSelector((state: RootState) =>
+    productsSelectors?.selectProductsByCategory(state, categoryType as string)
+  );
   const [productCategoryList, setProductCategoryList] = useState<ProductType[]>(
     []
   );
@@ -27,21 +31,14 @@ const CategoryScreen = () => {
   const [maxValue, setMaxValue] = useState(50);
 
   useEffect(() => {
-    const updatedCategoryList =
-      categoryType === "shop"
-        ? products
-        : products?.filter(
-            (ele: ProductType) => ele.category.toLowerCase() === categoryType
-          );
-
     setProductCategoryList(updatedCategoryList || []);
     setSearchProducts([]);
     setFilterProducts([]);
     setFilterApplied(false);
   }, [categoryType, products]);
 
-  const saleProducts = products?.filter(
-    (ele: ProductType) => ele?.sale === true
+  const saleProducts = useSelector((state: RootState) =>
+    productsSelectors?.selectSaleProducts(state)
   );
 
   const handleSliderChange = (values: number[]) => {
@@ -53,13 +50,18 @@ const CategoryScreen = () => {
     setInput(e.target.value);
   };
 
+  const searchProds = useSelector((state: RootState) =>
+    productsSelectors?.selectProductsBySearch(state, input)
+  );
+
+  const filteredProds = useSelector((state: RootState) =>
+    productsSelectors?.selectProductsByFilter(state, { minValue, maxValue })
+  );
+
   const handleSearch = () => {
     if (input === "") {
       setSearchProducts([]);
     } else {
-      const searchProds = productCategoryList.filter((ele: ProductType) =>
-        ele?.name.toLowerCase().includes(input.toLowerCase())
-      );
       setSearchProducts(searchProds);
     }
   };
@@ -67,10 +69,7 @@ const CategoryScreen = () => {
   const handleFilterProd = () => {
     setSearchProducts([]);
     setFilterApplied(true);
-    const prods = productCategoryList.filter(
-      (ele: ProductType) => ele?.price >= minValue && ele?.price <= maxValue
-    );
-    setFilterProducts(prods);
+    setFilterProducts(filteredProds);
   };
 
   const handleClearFilter = () => {

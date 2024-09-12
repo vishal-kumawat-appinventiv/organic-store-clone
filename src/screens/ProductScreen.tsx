@@ -3,12 +3,13 @@ import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import RelatedProducts from "../components/RelatedProducts";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
 import { CartType, ProductType } from "../libs/types";
 import { useDispatch } from "react-redux";
 import { setCartItems } from "../redux/cart/actions";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
+import { selectProductsData } from "../redux/products/selectors";
+import { selectCartData } from "../redux/cart/selectors";
 
 const ProductScreen = () => {
   const dispatch = useDispatch();
@@ -16,13 +17,9 @@ const ProductScreen = () => {
   const { prodName } = useParams();
   const currentPath = prodName!.replace(/-/g, " ");
 
-  const {
-    items: products,
-    error,
-    loading,
-  } = useSelector((state: RootState) => state.products);
+  const { items: products, loading, error } = useSelector(selectProductsData);
 
-  const cart = useSelector((state: RootState) => state?.cart?.items);
+  const { items: cart } = useSelector(selectCartData);
 
   const [count, setCount] = useState(1);
 

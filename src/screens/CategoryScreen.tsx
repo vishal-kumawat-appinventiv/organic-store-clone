@@ -7,17 +7,13 @@ import { ChevronRight } from "lucide-react";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
+import { selectProductsData } from "../redux/products/selectors";
 
 const CategoryScreen = () => {
   const { categoryType } = useParams();
-  const {
-    items: products,
-    error,
-    loading,
-  } = useSelector((state: RootState) => state.products);
+  const { items: products, loading, error } = useSelector(selectProductsData);
   const [productCategoryList, setProductCategoryList] = useState<ProductType[]>(
     []
   );

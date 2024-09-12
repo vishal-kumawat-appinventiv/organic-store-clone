@@ -1,11 +1,10 @@
 import React from "react";
 import { X } from "lucide-react";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
 import { CartType } from "../libs/types";
 import { useDispatch } from "react-redux";
 import { setCartItems } from "../redux/cart/actions";
-import { selectCartData } from "../redux/cart/selectors";
+import { cartSelectors } from "../redux/cart/selectors";
 
 interface DrawerProps {
   isOpen: boolean;
@@ -14,7 +13,8 @@ interface DrawerProps {
 
 const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
-  const { items: cart, totalPrice } = useSelector(selectCartData);
+  const cart: CartType[] = useSelector(cartSelectors.selectCartItems);
+  const totalPrice = useSelector(cartSelectors?.selectTotalPrice);
 
   const handleDeleteItem = (val: number) => () => {
     dispatch(setCartItems(cart.filter((item: CartType) => item.id !== val)));

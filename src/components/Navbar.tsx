@@ -1,22 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Menu, ShoppingBag, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import Drawer from "./Drawer";
 import { leftNavbarLinks, rightNavbarLinks } from "../libs/mock";
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { getTotalCount, getTotalPrice } from "../redux/cart/actions";
-import { selectCartData } from "../redux/cart/selectors";
+import { cartSelectors } from "../redux/cart/selectors";
 
 const Navbar = () => {
-  const dispatch = useDispatch();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const { items: cart, totalPrice, totalCount } = useSelector(selectCartData);
-
-  useEffect(() => {
-    dispatch(getTotalPrice());
-    dispatch(getTotalCount());
-  }, [cart, dispatch]);
+  const totalPrice = useSelector(cartSelectors?.selectTotalPrice);
+  const totalCount = useSelector(cartSelectors?.selectTotalCount);
 
   const logo =
     "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/organic-store-logo5.svg";

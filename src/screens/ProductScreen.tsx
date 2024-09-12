@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import RelatedProducts from "../components/RelatedProducts";
 import { useSelector } from "react-redux";
@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { setCartItems } from "../redux/cart/actions";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
-import { selectCartData } from "../redux/cart/selectors";
+import { cartSelectors } from "../redux/cart/selectors";
 import {
   selectError,
   selectLoading,
@@ -25,9 +25,13 @@ const ProductScreen = () => {
   const error = useSelector(selectError);
   const products = useSelector(selectProducts);
 
-  const { items: cart } = useSelector(selectCartData);
+  const cart = useSelector(cartSelectors?.selectCartItems);
 
   const [count, setCount] = useState(1);
+
+  useEffect(() => {
+    setCount(1);
+  }, [prodName]);
 
   const product = useMemo(() => {
     return products.find((product: ProductType) =>

@@ -1,15 +1,22 @@
 import { createSelector } from "reselect";
 import { RootState } from "../../../store";
+import { CartType } from "../../libs/types";
 
 const selectCartItems = (state: RootState) => state.cart.items;
-const selectCartTotalPrice = (state: RootState) => state.cart.totalPrice;
-const selectCartTotalCount = (state: RootState) => state.cart.totalCount;
 
-export const selectCartData = createSelector(
-  [selectCartItems, selectCartTotalPrice, selectCartTotalCount],
-  (items, totalPrice, totalCount) => ({
-    items,
-    totalPrice,
-    totalCount,
-  })
+const selectTotalPrice = createSelector(
+  [selectCartItems],
+  (items: CartType[]) =>
+    items.reduce((total, item) => total + item.price * item.quantity, 0)
 );
+
+const selectTotalCount = createSelector(
+  [selectCartItems],
+  (items: CartType[]) => items.reduce((total, item) => total + item.quantity, 0)
+);
+
+export const cartSelectors = {
+  selectCartItems,
+  selectTotalPrice,
+  selectTotalCount,
+};

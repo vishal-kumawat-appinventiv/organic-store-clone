@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import { ProductType } from "../libs/types";
 import { useSelector } from "react-redux";
-import { selectProductsData } from "../redux/products/selectors";
+import { selectProducts } from "../redux/products/selectors";
 
 const RelatedProducts = ({
   category,
 }: {
   category: ProductType["category"];
 }) => {
-  const { items: products } = useSelector(selectProductsData);
+  const products = useSelector(selectProducts);
   return (
     <>
       <div>

@@ -1,18 +1,19 @@
-import { useMemo } from "react";
 import ProductComponent from "./ProductComponent";
 import { leafImg } from "../libs/mock";
 import { useSelector } from "react-redux";
 import { ProductType } from "../libs/types";
 import Loading from "./Loading";
 import Error from "./Error";
-import { selectProductsData } from "../redux/products/selectors";
+import {
+  selectBestSellingProducts,
+  selectError,
+  selectLoading,
+} from "../redux/products/selectors";
 
 const BestSelling = () => {
-  const { items: products, loading, error } = useSelector(selectProductsData);
-
-  const bestSellingProducts = useMemo(() => {
-    return products.filter((p: ProductType) => p.bestSelling);
-  }, [products]);
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
+  const bestSellingProducts = useSelector(selectBestSellingProducts);
 
   return (
     <>

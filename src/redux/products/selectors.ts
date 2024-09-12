@@ -2,20 +2,20 @@ import { createSelector } from "reselect";
 import { RootState } from "../../../store";
 import { ProductType } from "../../libs/types";
 
-const selectProducts = (state: RootState) => state.products.items;
-const selectLoading = (state: RootState) => state.products.loading;
-const selectError = (state: RootState) => state.products.error;
+export const selectProducts = (state: RootState) => state.products.items;
+export const selectLoading = (state: RootState) => state.products.loading;
+export const selectError = (state: RootState) => state.products.error;
 
-const selectMemoProductsItem = createSelector(
+export const selectBestSellingProducts = createSelector(
   [selectProducts],
-  (items: ProductType[]) => items
+  (items: ProductType[]) => {
+    return items.filter((item) => item.bestSelling);
+  }
 );
 
-export const selectProductsData = createSelector(
-  [selectMemoProductsItem, selectLoading, selectError],
-  (items, loading, error) => ({
-    items,
-    loading,
-    error,
-  })
+export const selectTrendingProducts = createSelector(
+  [selectProducts],
+  (items: ProductType[]) => {
+    return items.filter((item) => item.trending);
+  }
 );

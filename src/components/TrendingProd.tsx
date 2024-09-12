@@ -1,17 +1,19 @@
-import { useMemo } from "react";
 import ProductComponent from "./ProductComponent";
 import { leafImg } from "../libs/mock";
 import { useSelector } from "react-redux";
 import { ProductType } from "../libs/types";
 import Loading from "./Loading";
 import Error from "./Error";
-import { selectProductsData } from "../redux/products/selectors";
+import {
+  selectError,
+  selectLoading,
+  selectTrendingProducts,
+} from "../redux/products/selectors";
 
 const TrendingProd = () => {
-  const { items: products, loading, error } = useSelector(selectProductsData);
-  const TrendingProds = useMemo(() => {
-    return products.filter((p: ProductType) => p.trending);
-  }, [products]);
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
+  const TrendingProds = useSelector(selectTrendingProducts);
 
   return (
     <>

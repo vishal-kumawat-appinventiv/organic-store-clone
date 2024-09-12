@@ -8,8 +8,12 @@ import { useDispatch } from "react-redux";
 import { setCartItems } from "../redux/cart/actions";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
-import { selectProductsData } from "../redux/products/selectors";
 import { selectCartData } from "../redux/cart/selectors";
+import {
+  selectError,
+  selectLoading,
+  selectProducts,
+} from "../redux/products/selectors";
 
 const ProductScreen = () => {
   const dispatch = useDispatch();
@@ -17,7 +21,9 @@ const ProductScreen = () => {
   const { prodName } = useParams();
   const currentPath = prodName!.replace(/-/g, " ");
 
-  const { items: products, loading, error } = useSelector(selectProductsData);
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
+  const products = useSelector(selectProducts);
 
   const { items: cart } = useSelector(selectCartData);
 

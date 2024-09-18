@@ -22,7 +22,7 @@ const persistConfig = {
   whitelist: ["cart"],
 };
 
-const rootReducer = combineReducers({
+const rootReducer: any = combineReducers({
   cart: cartReducer,
   products: productsReducer,
 });

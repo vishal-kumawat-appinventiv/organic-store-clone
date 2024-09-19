@@ -4,8 +4,8 @@ import {
   combineReducers,
   compose,
 } from "redux";
-import { cartReducer } from "./src/redux/cart/reducers";
-import { productsReducer } from "./src/redux/products/reducers";
+import { cartReducer } from "@/redux/cart/reducers";
+import { productsReducer } from "@/redux/products/reducers";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { thunk } from "redux-thunk";

@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import "@testing-library/jest-dom";
-import Navbar from "../components/Navbar";
+import Navbar from "@/components/Navbar";
 import { BrowserRouter } from "react-router-dom";
 import { useSelector } from "react-redux";
 

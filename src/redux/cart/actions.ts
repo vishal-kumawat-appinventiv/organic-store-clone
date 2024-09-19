@@ -1,4 +1,4 @@
-import { CartType } from "../../libs/types";
+import { CartType } from "@/libs/types";
 
 export const SET_CART_ITEMS = "SET_CART_ITEMS";
 

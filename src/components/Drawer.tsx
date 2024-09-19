@@ -1,10 +1,10 @@
 import React from "react";
 import { X } from "lucide-react";
 import { useSelector } from "react-redux";
-import { CartType } from "../libs/types";
+import { CartType } from "@/libs/types";
 import { useDispatch } from "react-redux";
-import { setCartItems } from "../redux/cart/actions";
-import { cartSelectors } from "../redux/cart/selectors";
+import { setCartItems } from "@/redux/cart/actions";
+import { cartSelectors } from "@/redux/cart/selectors";
 
 interface DrawerProps {
   isOpen: boolean;

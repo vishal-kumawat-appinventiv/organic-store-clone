@@ -1,15 +1,15 @@
 import { Link, useParams } from "react-router-dom";
-import { ProductType } from "../libs/types";
-import { lazy, useEffect, useState } from "react";
-const ProductComponent = lazy(() => import("../components/ProductComponent"));
+import { ProductType } from "@/libs/types";
+import { useEffect, useState } from "react";
+import ProductComponent from "@/components/ProductComponent";
 import { ChevronRight } from "lucide-react";
 //@ts-ignore
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 import { useSelector } from "react-redux";
-import Loading from "../components/Loading";
-import Error from "../components/Error";
-import { productsSelectors } from "../redux/products/selectors";
+import Loading from "@/components/Loading";
+import Error from "@/components/Error";
+import { productsSelectors } from "@/redux/products/selectors";
 import { RootState } from "../../store";
 
 const CategoryScreen = () => {

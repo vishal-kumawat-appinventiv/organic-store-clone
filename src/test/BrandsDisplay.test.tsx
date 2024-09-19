@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, vi, expect } from "vitest";
-import BrandsDisplay from "../components/BrandsDisplay";
+import BrandsDisplay from "@/components/BrandsDisplay";
 import "@testing-library/jest-dom";
 
 vi.mock("../libs/mock", () => ({

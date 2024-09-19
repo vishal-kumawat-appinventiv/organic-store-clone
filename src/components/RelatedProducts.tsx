@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { ProductType } from "../libs/types";
+import { ProductType } from "@/libs/types";
 import { useSelector } from "react-redux";
-import { productsSelectors } from "../redux/products/selectors";
+import { productsSelectors } from "@/redux/products/selectors";
 import { RootState } from "../../store";
 
 const RelatedProducts = ({

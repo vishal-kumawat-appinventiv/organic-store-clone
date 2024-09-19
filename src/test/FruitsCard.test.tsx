@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, vi, expect } from "vitest";
-import FruitsCard from "../components/FruitsCard";
+import FruitsCard from "@/components/FruitsCard";
 import "@testing-library/jest-dom";
 
 vi.mock("../libs/mock", () => ({

@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, vi, expect } from "vitest";
-import PriceOffBanner from "../components/PriceOffBaner";
+import PriceOffBanner from "@/components/PriceOffBaner";
 import "@testing-library/jest-dom";
 
 vi.mock("../components/ShopNowBtn", () => ({

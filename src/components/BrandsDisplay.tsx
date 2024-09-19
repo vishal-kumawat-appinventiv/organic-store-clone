@@ -1,4 +1,4 @@
-import { brandsLogo } from "../libs/mock";
+import { brandsLogo } from "@/libs/mock";
 
 const BrandsDisplay = () => {
   return (

@@ -5,7 +5,7 @@ import {
   moreLinks,
   quickLinks,
   siteLinks,
-} from "../libs/mock";
+} from "@/libs/mock";
 
 const Footer = () => {
   return (

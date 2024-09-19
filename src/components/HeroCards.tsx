@@ -1,4 +1,4 @@
-import { heroCardsData } from "../libs/mock";
+import { heroCardsData } from "@/libs/mock";
 
 const HeroCards = () => {
   return (

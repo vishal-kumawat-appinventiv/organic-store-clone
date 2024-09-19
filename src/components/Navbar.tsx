@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Menu, ShoppingBag, User } from "lucide-react";
 import { Link } from "react-router-dom";
-import Drawer from "./Drawer";
-import { leftNavbarLinks, rightNavbarLinks } from "../libs/mock";
+import Drawer from "@/components/Drawer";
+import { leftNavbarLinks, rightNavbarLinks } from "@/libs/mock";
 import { useSelector } from "react-redux";
-import { cartSelectors } from "../redux/cart/selectors";
+import { cartSelectors } from "@/redux/cart/selectors";
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);

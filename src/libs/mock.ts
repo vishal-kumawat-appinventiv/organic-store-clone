@@ -1,10 +1,10 @@
 import { NotebookTabs, PiggyBank, Recycle, Truck } from "lucide-react";
-import HomePage from "../screens/HomePage";
-import ProductScreen from "../screens/ProductScreen";
-import CategoryScreen from "../screens/CategoryScreen";
-import AboutScreen from "../screens/AboutScreen";
-import Contact from "../screens/Contact";
-import NotFound from "../screens/NotFound";
+import HomePage from "@/screens/HomePage";
+import ProductScreen from "@/screens/ProductScreen";
+import CategoryScreen from "@/screens/CategoryScreen";
+import AboutScreen from "@/screens/AboutScreen";
+import Contact from "@/screens/Contact";
+import NotFound from "@/screens/NotFound";
 
 export const dummyProducts = [
   {

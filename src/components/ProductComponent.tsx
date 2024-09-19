@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ProductType } from "../libs/types";
+import { ProductType } from "@/libs/types";
 
 const ProductComponent = ({ data }: { data: ProductType }) => {
   return (

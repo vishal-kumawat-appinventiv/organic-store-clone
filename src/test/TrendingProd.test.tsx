@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { useSelector } from "react-redux";
-import TrendingProd from "../components/TrendingProd";
+import TrendingProd from "@/components/TrendingProd";
 import { describe, it, expect, vi } from "vitest";
 import "@testing-library/jest-dom";
 

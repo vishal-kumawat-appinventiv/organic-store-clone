@@ -1,5 +1,5 @@
-import { fruitsCardProducts, leafDivider } from "../libs/mock";
-import ShopNowBtn from "./ShopNowBtn";
+import { fruitsCardProducts, leafDivider } from "@/libs/mock";
+import ShopNowBtn from "@/components/ShopNowBtn";
 
 const FruitsCard = () => {
   return (

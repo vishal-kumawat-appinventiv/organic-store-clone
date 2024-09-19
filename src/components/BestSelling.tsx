@@ -1,11 +1,11 @@
-import { leafImg } from "../libs/mock";
+import { leafImg } from "@/libs/mock";
 import { useSelector } from "react-redux";
-import { ProductType } from "../libs/types";
-import Loading from "./Loading";
-import Error from "./Error";
-import { productsSelectors } from "../redux/products/selectors";
+import { ProductType } from "@/libs/types";
+import Loading from "@/components/Loading";
+import Error from "@/components/Error";
+import { productsSelectors } from "@/redux/products/selectors";
 import { lazy, Suspense } from "react";
-const ProductComponent = lazy(() => import("./ProductComponent"));
+const ProductComponent = lazy(() => import("@/components/ProductComponent"));
 
 const BestSelling = () => {
   const loading = useSelector(productsSelectors?.selectLoading);

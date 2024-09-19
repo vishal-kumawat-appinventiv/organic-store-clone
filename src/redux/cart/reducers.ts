@@ -1,5 +1,5 @@
-import { CartType } from "../../libs/types";
-import { SET_CART_ITEMS } from "./actions";
+import { CartType } from "@/libs/types";
+import { SET_CART_ITEMS } from "@/redux/cart/actions";
 
 const initialState = {
   items: [] as CartType[],

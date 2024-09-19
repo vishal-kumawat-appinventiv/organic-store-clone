@@ -1,9 +1,9 @@
-import { ProductType } from "../../libs/types";
+import { ProductType } from "@/libs/types";
 import {
   FETCH_PRODUCTS,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_ERROR,
-} from "./actions";
+} from "@/redux/products/actions";
 
 const initialState = {
   items: [] as ProductType[],

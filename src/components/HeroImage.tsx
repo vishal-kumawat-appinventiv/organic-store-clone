@@ -1,5 +1,5 @@
 import { ShoppingCart } from "lucide-react";
-import { heroBottomLeaf, heroImage, leafImg } from "../libs/mock";
+import { heroBottomLeaf, heroImage, leafImg } from "@/libs/mock";
 
 const HeroImage = () => {
   return (

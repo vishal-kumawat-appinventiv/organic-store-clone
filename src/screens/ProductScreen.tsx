@@ -1,15 +1,15 @@
 import { useParams } from "react-router-dom";
-import { lazy, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Search } from "lucide-react";
-const RelatedProducts = lazy(() => import("../components/RelatedProducts"));
+import RelatedProducts from "@/components/RelatedProducts";
 import { useSelector } from "react-redux";
-import { CartType } from "../libs/types";
+import { CartType } from "@/libs/types";
 import { useDispatch } from "react-redux";
-import { setCartItems } from "../redux/cart/actions";
-import Loading from "../components/Loading";
-import Error from "../components/Error";
-import { cartSelectors } from "../redux/cart/selectors";
-import { productsSelectors } from "../redux/products/selectors";
+import { setCartItems } from "@/redux/cart/actions";
+import Loading from "@/components/Loading";
+import Error from "@/components/Error";
+import { cartSelectors } from "@/redux/cart/selectors";
+import { productsSelectors } from "@/redux/products/selectors";
 import { RootState } from "../../store";
 
 const ProductScreen = () => {

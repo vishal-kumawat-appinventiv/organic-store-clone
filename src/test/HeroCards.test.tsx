@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import HeroCards from "../components/HeroCards";
+import HeroCards from "@/components/HeroCards";
 import { describe, it, expect, vi } from "vitest";
 import "@testing-library/jest-dom";
 

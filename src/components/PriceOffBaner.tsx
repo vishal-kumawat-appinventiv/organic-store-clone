@@ -1,4 +1,4 @@
-import ShopNowBtn from "./ShopNowBtn";
+import ShopNowBtn from "@/components/ShopNowBtn";
 
 const PriceOffBaner = () => {
   return (

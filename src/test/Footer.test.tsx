@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import "@testing-library/jest-dom";
-import Footer from "../components/Footer";
+import Footer from "@/components/Footer";
 
 vi.mock("lucide-react", () => ({
   Facebook: () => <svg data-testid="facebook-icon" />,

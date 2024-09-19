@@ -1,6 +1,6 @@
 import { createSelector } from "reselect";
 import { RootState } from "../../../store";
-import { ProductType } from "../../libs/types";
+import { ProductType } from "@/libs/types";
 
 const selectProducts = (state: RootState) => state.products.items;
 const selectLoading = (state: RootState) => state.products.loading;

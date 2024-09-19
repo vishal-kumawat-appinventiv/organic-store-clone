@@ -45,10 +45,10 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose }) => {
         </div>
         <div className="flex flex-col h-[75vh]">
           <div className="flex-1">
-            {cart.length === 0 ? (
+            {cart?.length === 0 ? (
               <div className="p-4 text-center">No items in cart</div>
             ) : (
-              cart.map((item: CartType) => (
+              cart?.map((item: CartType) => (
                 <div
                   key={item.id}
                   className="flex items-center justify-between p-4 border-b"
@@ -80,7 +80,7 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose }) => {
           </div>
           <div className="flex items-center justify-between p-4 border-t border-b">
             <span className="font-bold">Subtotal</span>
-            <span className="font-bold">£{totalPrice.toString()}</span>
+            <span className="font-bold">£{`${totalPrice}`}</span>
           </div>
         </div>
         <div className="p-4">

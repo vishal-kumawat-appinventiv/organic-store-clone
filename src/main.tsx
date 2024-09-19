@@ -4,7 +4,7 @@ import "./index.css";
 import { Provider } from "react-redux";
 import { store, persistor } from "../store.ts";
 import { PersistGate } from "redux-persist/integration/react";
-import "@testing-library/jest-dom";
+// import "@testing-library/jest-dom";
 
 createRoot(document.getElementById("root")!).render(
   <>

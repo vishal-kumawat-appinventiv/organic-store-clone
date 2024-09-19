@@ -1,10 +1,11 @@
-import ProductComponent from "./ProductComponent";
 import { leafImg } from "../libs/mock";
 import { useSelector } from "react-redux";
 import { ProductType } from "../libs/types";
 import Loading from "./Loading";
 import Error from "./Error";
 import { productsSelectors } from "../redux/products/selectors";
+import { lazy, Suspense } from "react";
+const ProductComponent = lazy(() => import("./ProductComponent"));
 
 const TrendingProd = () => {
   const loading = useSelector(productsSelectors?.selectLoading);
@@ -31,9 +32,11 @@ const TrendingProd = () => {
               />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-              {TrendingProds.map((p: ProductType) => {
-                return <ProductComponent key={p.id} data={p} />;
-              })}
+              {TrendingProds.map((p: ProductType) => (
+                <Suspense key={p.id} fallback={<Loading />}>
+                  <ProductComponent data={p} />
+                </Suspense>
+              ))}
             </div>
           </div>
         </>

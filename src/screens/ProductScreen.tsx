@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import { Search } from "lucide-react";
-import RelatedProducts from "../components/RelatedProducts";
+const RelatedProducts = lazy(() => import("../components/RelatedProducts"));
 import { useSelector } from "react-redux";
 import { CartType } from "../libs/types";
 import { useDispatch } from "react-redux";

@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { ProductType } from "../libs/types";
-import { useEffect, useState } from "react";
-import ProductComponent from "../components/ProductComponent";
+import { lazy, useEffect, useState } from "react";
+const ProductComponent = lazy(() => import("../components/ProductComponent"));
 import { ChevronRight } from "lucide-react";
 //@ts-ignore
 import RangeSlider from "react-range-slider-input";

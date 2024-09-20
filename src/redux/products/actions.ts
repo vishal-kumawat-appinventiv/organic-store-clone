@@ -10,7 +10,7 @@ export const fetchProductsThunk = (): any => {
       dispatch({ type: FETCH_PRODUCTS });
       console.log("FETCH_PRODUCTS");
       const response = await fetch(
-        "https://run.mocky.io/v3/fad4827e-433c-4e1b-af10-08548ded3894"
+        "https://run.mocky.io/v3/bb105a19-ab14-4047-afb7-23c887e6d074"
       );
       const products: ProductType[] = await response.json();
       dispatch({ type: FETCH_PRODUCTS_SUCCESS, payload: products });

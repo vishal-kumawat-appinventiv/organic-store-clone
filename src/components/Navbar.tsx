@@ -54,7 +54,7 @@ const Navbar = () => {
           </div>
         </ul>
         <div className="flex items-center gap-3 lg:hidden">
-          <p className="text-[#8bc34a] font-bold">£{`${totalCount}`}</p>
+          <p className="text-[#8bc34a] font-bold">£{`${totalPrice}`}</p>
           <div onClick={() => setDrawerOpen(true)}>
             <ShoppingBag size={18} color="#8bc34a" />
           </div>

@@ -41,46 +41,10 @@ const selectRelatedProdsFirstThree = createSelector(
   }
 );
 
-const selectProductsByCategory = createSelector(
-  [selectProducts, selectCategory],
-  (products: ProductType[], category: string) => {
-    if (category === "shop") {
-      return products;
-    }
-    return products.filter(
-      (product) => product.category.toLowerCase() === category.toLowerCase()
-    );
-  }
-);
-
 const selectSaleProducts = createSelector(
   [selectProducts],
   (products: ProductType[]) => {
     return products.filter((product) => product.sale);
-  }
-);
-
-const selectSearch = (_: RootState, search: string) => search;
-const selectProductsBySearch = createSelector(
-  [selectProducts, selectSearch],
-  (products: ProductType[], search: string) => {
-    return products.filter((product) =>
-      product.name.toLowerCase().includes(search.toLowerCase())
-    );
-  }
-);
-
-const selectFilter = (
-  _: RootState,
-  filter: { minValue: number; maxValue: number }
-) => filter;
-const selectProductsByFilter = createSelector(
-  [selectProducts, selectFilter],
-  (products: ProductType[], filter: { minValue: number; maxValue: number }) => {
-    return products.filter(
-      (product) =>
-        product.price >= filter.minValue && product.price <= filter.maxValue
-    );
   }
 );
 
@@ -92,8 +56,5 @@ export const productsSelectors = {
   selectTrendingProducts,
   selectProductByName,
   selectRelatedProdsFirstThree,
-  selectProductsByCategory,
   selectSaleProducts,
-  selectProductsBySearch,
-  selectProductsByFilter,
 };

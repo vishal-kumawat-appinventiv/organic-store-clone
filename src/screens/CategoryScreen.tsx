@@ -17,9 +17,6 @@ const CategoryScreen = () => {
   const loading = useSelector(productsSelectors?.selectLoading);
   const error = useSelector(productsSelectors?.selectError);
   const products = useSelector(productsSelectors?.selectProducts);
-  const updatedCategoryList = useSelector((state: RootState) =>
-    productsSelectors?.selectProductsByCategory(state, categoryType as string)
-  );
   const [productCategoryList, setProductCategoryList] = useState<ProductType[]>(
     []
   );
@@ -31,6 +28,15 @@ const CategoryScreen = () => {
   const [maxValue, setMaxValue] = useState(50);
 
   useEffect(() => {
+    let updatedCategoryList = [];
+    if (categoryType === "shop") {
+      updatedCategoryList = products;
+    } else {
+      updatedCategoryList = products.filter(
+        (product: ProductType) =>
+          product.category.toLowerCase() === categoryType!.toLowerCase()
+      );
+    }
     setProductCategoryList(updatedCategoryList || []);
     setSearchProducts([]);
     setFilterProducts([]);
@@ -50,18 +56,13 @@ const CategoryScreen = () => {
     setInput(e.target.value);
   };
 
-  const searchProds = useSelector((state: RootState) =>
-    productsSelectors?.selectProductsBySearch(state, input)
-  );
-
-  const filteredProds = useSelector((state: RootState) =>
-    productsSelectors?.selectProductsByFilter(state, { minValue, maxValue })
-  );
-
   const handleSearch = () => {
     if (input === "") {
       setSearchProducts([]);
     } else {
+      const searchProds = products.filter((product: ProductType) =>
+        product.name.toLowerCase().includes(input.toLowerCase())
+      );
       setSearchProducts(searchProds);
     }
   };
@@ -69,6 +70,10 @@ const CategoryScreen = () => {
   const handleFilterProd = () => {
     setSearchProducts([]);
     setFilterApplied(true);
+    const filteredProds = products.filter(
+      (product: ProductType) =>
+        product.price >= minValue && product.price <= maxValue
+    );
     setFilterProducts(filteredProds);
   };
 

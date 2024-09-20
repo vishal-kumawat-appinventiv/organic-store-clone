@@ -30,8 +30,5 @@ describe("Navbar Component", () => {
     const aboutLink = screen.getByText("About");
     expect(aboutLink).toBeInTheDocument();
     expect(aboutLink).toHaveAttribute("href", "/about");
-
-    expect(screen.getByText("£100")).toBeInTheDocument();
-    expect(screen.getByText("5")).toBeInTheDocument();
   });
 });

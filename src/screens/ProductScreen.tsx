@@ -1,64 +1,24 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { Search } from "lucide-react";
 import RelatedProducts from "@/components/RelatedProducts";
 import { useSelector } from "react-redux";
-import { CartType } from "@/libs/types";
-import { useDispatch } from "react-redux";
-import { setCartItems } from "@/redux/cart/actions";
 import Loading from "@/components/Loading";
 import Error from "@/components/Error";
-import { cartSelectors } from "@/redux/cart/selectors";
 import { productsSelectors } from "@/redux/products/selectors";
 import { RootState } from "../../store";
+import AddToCartBtns from "@/components/AddToCartBtns";
 
 const ProductScreen = () => {
-  const dispatch = useDispatch();
   const { prodName } = useParams();
 
-  const [count, setCount] = useState(1);
   const currentPath = prodName!.replace(/-/g, " ");
 
   const loading = useSelector(productsSelectors?.selectLoading);
   const error = useSelector(productsSelectors?.selectError);
-  const cart = useSelector(cartSelectors?.selectCartItems);
-
-  useEffect(() => {
-    setCount(1);
-  }, [prodName]);
 
   const product = useSelector((state: RootState) =>
     productsSelectors.selectProductByName(state, currentPath)
   );
-
-  const handleAddToCart = () => {
-    const existingItem = cart.find((item: CartType) => item.id === product?.id);
-
-    if (existingItem) {
-      dispatch(
-        setCartItems(
-          cart.map((item: CartType) =>
-            item.id === product?.id
-              ? { ...item, quantity: item.quantity + count }
-              : item
-          )
-        )
-      );
-    } else {
-      dispatch(
-        setCartItems([
-          ...cart,
-          {
-            id: product?.id!,
-            img: product?.img!,
-            productName: product?.name!,
-            quantity: count!,
-            price: product?.price!,
-          },
-        ])
-      );
-    }
-  };
 
   return (
     <>
@@ -90,27 +50,7 @@ const ProductScreen = () => {
                       <p className="text-gray-600">{product?.desc}</p>
                     </div>
                     <div className="flex items-center">
-                      <button
-                        className="px-3 py-1 border-2 border-gray-200 hover:bg-[#6a9739]"
-                        onClick={() => count > 1 && setCount(count - 1)}
-                      >
-                        -
-                      </button>
-                      <p className="px-3 py-1 border-t-2 border-b-2 border-l-0 border-r-0 border-gray-200">
-                        {count}
-                      </p>
-                      <button
-                        className="px-3 py-1 border-2 border-gray-200 hover:bg-[#6a9739]"
-                        onClick={() => setCount(count + 1)}
-                      >
-                        +
-                      </button>
-                      <button
-                        onClick={handleAddToCart}
-                        className="px-10 rounded py-1 bg-[#6a9739] text-white ml-3"
-                      >
-                        Add to Cart
-                      </button>
+                      <AddToCartBtns product={product!} />
                     </div>
                     <div className="border-t">
                       <p>Category: {product?.category}</p>

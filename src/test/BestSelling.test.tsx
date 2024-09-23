@@ -32,6 +32,7 @@ describe("BestSelling Component", () => {
       .mockReturnValueOnce(null) // No error
       .mockReturnValueOnce([
         {
+          id: 1,
           name: "Assorted Coffee",
           img: "https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/coffee-asorted.jpg",
         },

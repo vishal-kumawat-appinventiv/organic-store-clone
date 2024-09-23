@@ -74,4 +74,3 @@ const AddToCartBtns = ({ product }: { product: ProductType }) => {
 };
 
 export default AddToCartBtns;
-
